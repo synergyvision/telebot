@@ -1,1 +1,1 @@
-web: logicBot.js
+web: node logicBot.js
