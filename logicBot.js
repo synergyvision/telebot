@@ -1,7 +1,7 @@
 const Telegraf = require('telegraf');
 
 const API_TOKEN = process.env.BOT_TOKEN || ''
-const PORT = process.env.PORT || 3000
+const PORT = 3000
 const URL = process.env.BOT_URL
 
 const bot = new Telegraf(API_TOKEN);
