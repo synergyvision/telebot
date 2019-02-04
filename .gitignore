@@ -1,0 +1,4 @@
+# Librerias de telegraf
+node_modules/
+/package-lock.json
+/package.json
