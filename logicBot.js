@@ -1,8 +1,8 @@
 const Telegraf = require('telegraf');
 
-const API_TOKEN = '693912750:AAGxhaERiIwqf3BPrqrl4r_YGJpy_2WzgrY' /*process.env.BOT_TOKEN || ''*/
-const PORT = /*process.env.PORT ||*/ 3000
-const URL = 'https://web.telegram.org/#/im?p=@VisionTeleBot' /*process.env.BOT_URL*/
+const API_TOKEN = process.env.BOT_TOKEN || ''
+const PORT = process.env.PORT || 3000
+const URL = process.env.BOT_URL
 
 const bot = new Telegraf(API_TOKEN);
 bot.telegram.setWebhook(`${URL}bot${API_TOKEN}`);
