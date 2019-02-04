@@ -1,0 +1,19 @@
+{
+  "name": "telebot",
+  "version": "1.0.0",
+  "description": "Bot de telegram para la atencion al cliente y acceso a la informacion sobre instrumentos financieros",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/synergyvision/telebot.git"
+  },
+  "author": "SynergyVision-BraulioPicon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/synergyvision/telebot/issues"
+  },
+  "homepage": "https://github.com/synergyvision/telebot#readme"
+}
