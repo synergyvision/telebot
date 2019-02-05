@@ -4,6 +4,7 @@
   "description": "Bot de telegram para la atencion al cliente y acceso a la informacion sobre instrumentos financieros",
   "main": "index.js",
   "dependencies": {
+    "express": "^4.16.4",
     "telegraf": "^3.27.0"
   },
   "devDependencies": {},
