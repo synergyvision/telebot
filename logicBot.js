@@ -9,7 +9,7 @@ const URL_BOT = process.env.BOT_URL_SECRET;
 const expressApp = express();
 const bot = new Telegraf(API_TOKEN);
 
-expressApp.use(bot.webhookCallback(`/secret-path ${URL_BOT}`));
+expressApp.use(bot.webhookCallback(`/secret-path`));
 bot.telegram.setWebhook(`${URL} bot${API_TOKEN}`);
 
 bot.startWebhook(`/bot${API_TOKEN}`, null, PORT);
