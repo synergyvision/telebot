@@ -8,7 +8,7 @@ const URL = process.env.BOT_URL ;
 const expressApp = express();
 const bot = new Telegraf(API_TOKEN);
 
-bot.telegram.setWebhook(`${URL} bot${API_TOKEN}`);
+bot.telegram.setWebhook(`${URL}`);
 
 bot.startWebhook(`/bot${API_TOKEN}`, null, PORT);
 
