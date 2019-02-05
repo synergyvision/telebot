@@ -18,7 +18,7 @@ expressApp.get('/', (req, res) => {
 });
 
 expressApp.listen(PORT, () => {
-  console.log('Example app listening on port 3000!')
+  console.log(`Example app listening on port ${PORT}!`)
 });
 
 bot.start((context)=>{
