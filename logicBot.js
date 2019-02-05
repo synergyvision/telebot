@@ -1,19 +1,10 @@
 const Telegraf = require('telegraf');
-const express = require('express'); 
-const expressApp = express();
+
 
 const API_TOKEN = process.env.BOT_TOKEN || '' ;
 const PORT = process.env.PORT || 3000 ;
-
-expressApp.get('/', (req, res) => { 
-  res.send('Hello World!') 
-}); 
-
-expressApp.listen(port, () => { 
-  console.log(`Listening on port ${port}`) 
-});
-
 const URL = process.env.BOT_URL ;
+
 const bot = new Telegraf(API_TOKEN);
 
 
