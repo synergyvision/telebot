@@ -4,7 +4,6 @@ const API_TOKEN = process.env.BOT_TOKEN || '' ;
 const PORT = process.env.PORT || 3000 ;
 const URL = process.env.BOT_URL ;
 
-const expressApp = express();
 const bot = new Telegraf(API_TOKEN);
 
 
