@@ -29,5 +29,6 @@ bot.command('ayuda', (context) => {
         Markup.callbackButton('Visitanos', 'visitus')
     ]
     let message = Markup.inlineKeyboard(botoms).extra();
+    message['parse_mode'] = 'HTML'
     bot.telegram.sendMessage(context.from.id,'Conocenos', message)
   })
