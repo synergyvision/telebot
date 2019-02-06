@@ -1,2 +1,13 @@
 # Librerias de de node y node-telegraf
 node_modules/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# lock scripts
+package-lock.json
+yarn.lock
+
+
