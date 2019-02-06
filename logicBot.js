@@ -11,15 +11,12 @@ bot.telegram.setWebhook(`${URL}bot${API_TOKEN}`);
 bot.startWebhook(`/bot${API_TOKEN}`, null, PORT);
 
 bot.start((context)=>{
-  console.log('synergyvisionbot started', context.from.id)
+  console.log('synergyvisionbot started', context.from.id);
   return context.reply('Bienvenidos a Synergy Vision.')
 });
 
-bot.command('ayuda', (context) => {
-    context.reply('Esta es la ayuda!!')
-  })
 
-  bot.command('Informacion', (context) => {
+bot.command('Informacion', (context) => {
     let botoms = [
         Markup.callbackButton('Información General', 'info'),
         Markup.callbackButton('Servicios', 'service'),
@@ -28,7 +25,17 @@ bot.command('ayuda', (context) => {
         Markup.callbackButton('Unetenos', 'joinus'),
         Markup.callbackButton('Visitanos', 'visitus')
     ]
-    let message = Markup.inlineKeyboard(botoms).extra();
+    let botoms1 = [
+        Markup.callbackButton('probando')
+    ]
+    let message = Markup.inlineKeyboard(botoms,botoms1).extra()
+    
     message['parse_mode'] = 'HTML'
+
     bot.telegram.sendMessage(context.from.id,'Conocenos', message)
-  })
+});
+
+
+
+
+
