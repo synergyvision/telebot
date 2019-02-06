@@ -25,10 +25,12 @@ bot.command('Informacion', (context) => {
         Markup.callbackButton('Unetenos', 'joinus'),
         Markup.callbackButton('Visitanos', 'visitus')
     ]
+
     let botoms1 = [
         Markup.callbackButton('probando')
     ]
-    let message = Markup.inlineKeyboard(botoms,botoms1).extra()
+
+    let message = Markup.inlineKeyboard(botoms).extra()
     
     message['parse_mode'] = 'HTML'
 
@@ -36,6 +38,9 @@ bot.command('Informacion', (context) => {
 });
 
 
-
+bot.on('callback_query', (context) =>{
+    context.answerCbQuery()
+    console.log(context.update)
+});
 
 
