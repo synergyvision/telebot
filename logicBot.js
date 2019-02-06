@@ -26,10 +26,6 @@ bot.hears('Informacion', (context) => {
         Markup.callbackButton('Visitanos', 'visitus')
     ]
 
-    let botoms1 = [
-        Markup.callbackButton('probando')
-    ]
-
     let message = Markup.inlineKeyboard(botoms).extra()
     
     message['parse_mode'] = 'HTML'
@@ -40,7 +36,32 @@ bot.hears('Informacion', (context) => {
 
 bot.on('callback_query', (context) =>{
     context.answerCbQuery()
-    console.log(context.update)
+    
+    switch(context.update.callback_query.data){
+        case 'info':
+         context.reply('Asumo que aqui se consume Firebase y el servidor de Synergy');
+        break;
+
+        case 'service':
+        context.reply('Asumo que aqui se consume Firebase y el servidor de Synergy');
+        break;
+            
+        case 'mision':
+        context.reply('Asumo que aqui se consume Firebase y el servidor de Synergy');
+        break;
+        
+        case 'vision':
+        context.reply('Asumo que aqui se consume Firebase y el servidor de Synergy');
+        break;
+            
+        case 'joinus':
+        context.reply('Asumo que aqui se consume Firebase y el servidor de Synergy');
+        break;
+        
+        case 'visitus':
+        context.reply('Asumo que aqui se consume Firebase y el servidor de Synergy');
+        break;
+    }
 });
 
 
