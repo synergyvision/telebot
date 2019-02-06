@@ -16,7 +16,7 @@ bot.start((context)=>{
 });
 
 
-bot.command('Informacion', (context) => {
+bot.hears('Informacion', (context) => {
     let botoms = [
         Markup.callbackButton('Información General', 'info'),
         Markup.callbackButton('Servicios', 'service'),
