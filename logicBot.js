@@ -12,3 +12,7 @@ bot.start((context)=>{
   console.log('synergyvisionbot started', context.from.id)
   return context.reply('Bienvenidos a Synergy Vision.')
 })
+
+bot.command('ayuda', (context) => {
+    context.reply('Esta es la ayuda!!')
+  })
