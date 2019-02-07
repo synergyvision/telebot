@@ -1,6 +1,5 @@
 var admin = require("firebase-admin");
 
-const URL_DB = process.env.BD_DATABASEURL;
 
 var serviceAccount = {
   type: process.env.FIREBASE_TYPE,
