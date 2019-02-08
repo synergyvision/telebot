@@ -1,6 +1,5 @@
 const Telegraf = require('telegraf');
 const Markup = require('telegraf/markup');
-const command = require('./comandBot');
 
 const API_TOKEN = process.env.BOT_TOKEN || '';
 const PORT = process.env.PORT || 3000;
