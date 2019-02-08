@@ -15,6 +15,9 @@ bot.start((context)=>{
   return context.reply('Bienvenidos a Synergy Vision.')
 });
 
+bot.hears('Alo', (context) => {
+return context.reply('Si estamos funcionando')
+});
 
 bot.hears('Informacion', (context) => {
     let botoms = [
