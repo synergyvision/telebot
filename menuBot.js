@@ -1,4 +1,5 @@
-const bot = require('./logicBot').bot;
+const logicbot = require('./logicBot');
+const bot = logicbot.botexport();
 
 bot.start((context)=>{
     console.log('synergyvisionbot started', context.from.id);
