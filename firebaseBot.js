@@ -20,4 +20,12 @@ admin.initializeApp({
   databaseURL: process.env.FIREBASE_DATABASEURL
 });
 
-var database = admin.database();  
+var database = admin.database(); 
+
+var usersRef = ref.child("Usuario");
+
+usersRef.set({
+    apellido: "Espinoza",
+    email:"esinozamanuel@gmail.com",
+    nombre:"Manuel"
+});

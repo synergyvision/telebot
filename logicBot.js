@@ -12,17 +12,17 @@ bot.startWebhook(`/bot${API_TOKEN}`, null, PORT);
 
 bot.start((context)=>{
     console.log('synergyvisionbot started', context.from.id);
-    return context.reply('Bienvenidos a Synergy Vision.')
+    return context.reply(
+        'Bienvenidos a Synergy Vision. \n '+
+        'Para conocer mas sobre nosotros \n'+
+        'escriba la palabra Informacion'
+    )
   });
   
   bot.hears('Alo', (context) => {
   return context.reply('Si estamos funcionando')
   });
   
-  bot.hears('New', (context) => {
-    return context.reply('We are Synergy')
-    });
-
   bot.hears('Informacion', (context) => {
       let botoms = [
   
@@ -47,7 +47,7 @@ bot.start((context)=>{
       bot.telegram.sendMessage(context.from.id,'Conocenos', message)
   });
   
-  
+
   bot.on('callback_query', (context) =>{
       context.answerCbQuery()
       
