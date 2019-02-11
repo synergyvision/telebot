@@ -21,12 +21,14 @@ return context.reply('Si estamos funcionando')
 
 bot.hears('Informacion', (context) => {
     let botoms = [
-        Markup.callbackButton('Información General', 'info'),
-        Markup.callbackButton('Servicios', 'service'),
-        Markup.callbackButton('Misión', 'mision'),
-        Markup.callbackButton('Visión', 'vision'),
-        Markup.callbackButton('Unetenos', 'joinus'),
-        Markup.callbackButton('Visitanos', 'visitus')
+        botoms2 = [Markup.callbackButton('Información General', 'info'),
+        Markup.callbackButton('Servicios', 'service')],
+
+        botoms3 = [Markup.callbackButton('Misión', 'mision'),
+        Markup.callbackButton('Visión', 'vision')],
+
+        botom4 = [Markup.callbackButton('Unetenos', 'joinus'),
+        Markup.callbackButton('Visitanos', 'visitus')]
     ]
 
     let message = Markup.inlineKeyboard(botoms).extra()
