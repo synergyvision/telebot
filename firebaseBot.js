@@ -28,4 +28,6 @@ usersRef.set({
     apellido: "Espinoza",
     email:"esinozamanuel@gmail.com",
     nombre:"Manuel"
+}).catch(function (err){
+    console.log(err.message);
 });
