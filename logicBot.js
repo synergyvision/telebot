@@ -1,5 +1,6 @@
 const Telegraf = require('telegraf');
 const Markup = require('telegraf/markup');
+var admin = require("firebase-admin");
 
 const API_TOKEN = process.env.BOT_TOKEN || '';
 const PORT = process.env.PORT || 3000;
@@ -79,3 +80,34 @@ bot.start((context)=>{
   });
 
 
+
+  var serviceAccount = {
+    type: process.env.FIREBASE_TYPE,
+    project_id: process.env.FIREBASE_PROJECTID,
+    private_key_id: process.env.FIREBASE_PRIVATEKEYID,
+    private_key: process.env.FIREBASE_PRIVATEKEY,
+    client_email: process.env.FIREBASE_CLIENTEMAIL,
+    client_id: process.env.FIREBASE_CLIENTID,
+    auth_uri: process.env.FIREBASE_AUTHURI,
+    token_uri: process.env.FIREBASE_TOKENURI,
+    auth_provider_x509_cert_url: process.env.FIREBASE_AUTHPROVIDER,
+    client_x509_cert_url: process.env.FIREBASE_CLIENT
+  
+  };
+  
+  admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount),
+    databaseURL: process.env.FIREBASE_DATABASEURL
+  });
+  
+  var database = admin.database(); 
+  
+  var usersRef = ref.child("Usuario");
+  
+  usersRef.set({
+      apellido: "Espinoza",
+      email:"esinozamanuel@gmail.com",
+      nombre:"Manuel"
+  }).catch(function (err){
+      console.log(err.message);
+  });
