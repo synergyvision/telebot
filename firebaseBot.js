@@ -27,18 +27,3 @@ module.exports ={
 
 
 };
-
-
-
-//const ref = Database().database.ref();
-
-//var docRef = db.collection('users').doc('alovelace');
-//var usersRef = Database().collection('Usuario');
-
-//usersRef.set({
-//    apellido: "Picon",
-//    email:"brauliopicon96@gmail.com",
-//    nombre:"Braulio"
-//}).catch(function (err){
-//    console.log(err.message);
-//});

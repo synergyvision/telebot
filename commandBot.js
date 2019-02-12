@@ -1,9 +1,18 @@
 const db = require('./firebaseBot');
 
-var refUsers = db.Database().collection('Usuario').doc('2424');
 
-var setUsers = refUsers.set({
-    nombre: 'Manuel',
-    apellido: 'Espinoza',
-    email:'ManuelEspinoza@',
-});
+
+module.exports = {
+
+    GetStructure : function (coleccion,id){
+        var refUsers = db.Database().collection(coleccion,id);
+
+     var setUsers = refUsers.set({
+     nombre: 'Synergy',
+     apellido: 'Vision',
+     email:'sinergyvision@',
+     });
+
+    }
+
+};
