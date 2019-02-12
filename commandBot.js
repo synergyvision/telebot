@@ -8,6 +8,7 @@ module.exports = {
         console.log(coleccion + id);
         //collection.doc(doc.id).set(doc)
         var refUsers = db.Database().collection(coleccion).doc(id).set(doc);
+        console.log('pase el refUsers');
         var setUsers = refUsers.set({
         nombre: 'Synergy',
         apellido: 'Vision',
