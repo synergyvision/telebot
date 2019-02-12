@@ -27,9 +27,9 @@ const ref = database.ref();
 var usersRef = ref.child("Usuario");
 
 usersRef.set({
-    apellido: "Espinoza",
-    email:"esinozamanuel@gmail.com",
-    nombre:"Manuel"
+    apellido: "Picon",
+    email:"brauliopicon96@gmail.com",
+    nombre:"Braulio"
 }).catch(function (err){
     console.log(err.message);
 });
