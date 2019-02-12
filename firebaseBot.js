@@ -22,7 +22,7 @@ admin.initializeApp({
 
 var database = admin.database(); 
 
-const ref = admin.database().ref;
+const ref = database.ref();
 
 var usersRef = ref.child("Usuario");
 
