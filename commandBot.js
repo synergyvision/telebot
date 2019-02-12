@@ -13,7 +13,7 @@ module.exports = {
             email:'sinergyvision@'
         }
 
-        var refUsers = db.Database().collection(coleccion).doc(id).set(setUsers);   
+        var refUsers = db.Database().collection('Usuario').doc('109826').set(setUsers);   
     }
 
 };
