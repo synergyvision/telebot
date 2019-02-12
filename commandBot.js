@@ -1,9 +1,9 @@
 const db = require('./firebaseBot');
 
-var refUsers = db.Database().collection('Usuario').doc('12345');
+var refUsers = db.Database().collection('Usuario').doc('2424');
 
 var setUsers = refUsers.set({
-    nombre: 'Braulio',
-    apellido: 'Picon',
-    email:'Brauliopicon96',
+    nombre: 'Manuel',
+    apellido: 'Espinoza',
+    email:'ManuelEspinoza@',
 });
