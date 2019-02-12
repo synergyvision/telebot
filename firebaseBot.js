@@ -21,7 +21,8 @@ admin.initializeApp({
 });
 
 var database = admin.database(); 
-const ref = firebase().database().ref;
+
+const ref = admin.database().ref;
 
 var usersRef = ref.child("Usuario");
 
