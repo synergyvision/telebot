@@ -14,14 +14,17 @@ var serviceAccount = {
   client_x509_cert_url: process.env.FIREBASE_CLIENT
 
 };
-module.exports ={
 
-  Database : function() {
-  admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount),
-    databaseURL: process.env.FIREBASE_DATABASEURL
-  });
-  var database = admin.firestore(); 
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL: process.env.FIREBASE_DATABASEURL
+});
+
+var database = admin.firestore();
+
+module.exports ={
+  
+  Database : function() { 
   return database;
   }
 
