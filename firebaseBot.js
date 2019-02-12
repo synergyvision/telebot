@@ -14,22 +14,31 @@ var serviceAccount = {
   client_x509_cert_url: process.env.FIREBASE_CLIENT
 
 };
+module.exports ={
 
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-  databaseURL: process.env.FIREBASE_DATABASEURL
-});
+  Database : function() {
+  admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount),
+    databaseURL: process.env.FIREBASE_DATABASEURL
+  });
+  var database = admin.firestore(); 
+  return database;
+  }
 
-var database = admin.database(); 
 
-const ref = database.ref();
+};
 
-var usersRef = ref.child("Usuario");
 
-usersRef.set({
-    apellido: "Picon",
-    email:"brauliopicon96@gmail.com",
-    nombre:"Braulio"
-}).catch(function (err){
-    console.log(err.message);
-});
+
+//const ref = Database().database.ref();
+
+//var docRef = db.collection('users').doc('alovelace');
+//var usersRef = Database().collection('Usuario');
+
+//usersRef.set({
+//    apellido: "Picon",
+//    email:"brauliopicon96@gmail.com",
+//    nombre:"Braulio"
+//}).catch(function (err){
+//    console.log(err.message);
+//});
