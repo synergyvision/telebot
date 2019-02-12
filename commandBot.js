@@ -13,7 +13,7 @@ module.exports = {
             email: lastname
         }
 
-        var refUsers = db.Database().collection('Usuario').set(setUsers);   
+        var refUsers = db.Database().collection('Usuario').doc().set(setUsers);   
     }
 
 };
