@@ -59,8 +59,11 @@ bot.start((context)=>{
             var usuario = command.GetUsers('1');
             usuario.then( (usuario) =>{
                 console.log(usuario);
-            })
-            context.reply('Hola'+'  '+ usuario.nombre);
+                context.reply('Hola'+'  '+ usuario.nombre);
+            }).catch(err => {
+                console.log('Error saludando', err);
+              });
+            
           break;
   
           case 'service':
