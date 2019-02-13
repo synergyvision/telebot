@@ -55,7 +55,7 @@ bot.start((context)=>{
       
       switch(context.update.callback_query.data){
           case 'info':
-            command.GetStructure();
+            context.reply(command.GetStructure('Usuario','Garanton'));
             context.reply('Asumo que aqui se consume Firebase y el servidor de Synergy');
           break;
   

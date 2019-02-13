@@ -4,11 +4,10 @@ const db = require('./firebaseBot');
 
 module.exports = {
 
-    GetStructure : function (name,id,lastname){
-        
+    GetStructure : function (collection,dato){
+        var refCollection = db.Database().collection(collection);
+        var queryCollection= refCollection.where('email','==',dato);
 
-
-           
     },
 
     PostUsers : function(name,lastname,id,email){
@@ -21,4 +20,4 @@ module.exports = {
         var refUsers = db.Database().collection('Usuario').doc().set(setUsers);
     },
     
-};
+};)
