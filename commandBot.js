@@ -11,22 +11,17 @@ module.exports = {
   //      return queryCollection;
   //  },
 
-  /*  GetUsers : function (dato) {
-        var refUsers = db.Database().collection('Usuario');
-        var queryUsers= refUsers.where('email','==',dato);
-        var getUsers = queryUsers.get()
-           .then(doc => {
-
-           })
-     //   queryUsers.get().then(function (querySnapshot) {
-     //        data = querySnapshot.docs.map(function (documentSnapshot) {
-     //           return documentSnapshot.get().email;
-     //         });
-     //   });
-
-        return getUsers;
-  
-    },*/
+    GetUsers : function (collectionID) {
+        var refUsers = db.Database().collection('Usuario').doc(collectionID);
+        refUsers.get().then(snapshot => {
+            snapshot.forEach(doc => {
+              console.log(doc.id, '=>', doc.data());
+            });
+          })
+          .catch(err => {
+            console.log('Error getting documents', err);
+          });
+    },
 
     PostUsers : function(name,lastname,id,email){
         var setUsers = {
