@@ -13,16 +13,22 @@ module.exports = {
 
     GetUsers : function (collectionID) {
         var refUsers = db.Database().collection('Usuario').doc(collectionID);
-        refUsers.get().then(doc => {
+        
+        return refUsers.get()
+        .then(doc => {
                 if (!doc.exists) {
                   console.log('No such document!');
                 } else {
-                  console.log('Document data:', doc.data());
+                    var usuario = doc.data();
+                    console.log('Document data:', usuario);
+                    return usuario;
+                  
                 }
               })
               .catch(err => {
                 console.log('Error getting document', err);
               });
+        
     },
 
     PostUsers : function(name,lastname,id,email){

@@ -57,8 +57,9 @@ bot.start((context)=>{
           case 'info':
             //command.PostUsers('Braulio','Picon','2','brauliopicon@');
             var usuario = command.GetUsers('1');
+            console.log(usuario);
             //usuario.then(function )
-            context.reply('Hola'+'  '+ usuario.nombre +'  '+ usuario.apellido);
+            context.reply('Hola'+'  '+ usuario.nombre);
           break;
   
           case 'service':
