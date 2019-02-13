@@ -14,9 +14,9 @@ module.exports = {
     PostUsers : function(name,lastname,id,email){
         var setUsers = {
             nombre: name,
-            apellido: id,
+            apellido: lastname,
             identification: id,
-            email: lastname
+            email: email
         }
         var refUsers = db.Database().collection('Usuario').doc().set(setUsers);
     },
