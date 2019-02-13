@@ -20,9 +20,8 @@ module.exports = {
                   console.log('No such document!');
                 } else {
                     var usuario = doc.data();
-                    console.log('Document data:', usuario);
+                    //console.log('Document usuario:', usuario);
                     return usuario;
-                  
                 }
               })
               .catch(err => {

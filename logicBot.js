@@ -58,7 +58,7 @@ bot.start((context)=>{
             //command.PostUsers('Braulio','Picon','2','brauliopicon@');
             var usuario = command.GetUsers('1');
             usuario.then( (usuario) =>{
-                console.log(usuario);
+                //console.log(usuario);
                 context.reply('Hola'+'  '+ usuario.nombre);
             }).catch(err => {
                 console.log('Error saludando', err);
