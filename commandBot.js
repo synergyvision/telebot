@@ -15,7 +15,7 @@ module.exports = {
         var refUsers = db.Database().collection('Usuario').doc(collectionID);
         refUsers.get().then(snapshot => {
             snapshot.forEach(doc => {
-              console.log(doc.id, '=>', doc.data());
+              console.log(doc.collectionID, '=>', doc.data());
             });
           })
           .catch(err => {
