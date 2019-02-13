@@ -55,10 +55,10 @@ bot.start((context)=>{
       
       switch(context.update.callback_query.data){
           case 'info':
-            command.PostUsers('Braulio','Picon','2','brauliopicon@');
-            //var usuario = command.GetUsers('1');
+            //command.PostUsers('Braulio','Picon','2','brauliopicon@');
+            var usuario = command.GetUsers('1');
             //usuario.then(function )
-            //context.reply('Hola'+ usuario);
+            context.reply('Hola'+'  '+ usuario.nombre +'  '+ usuario.apellido);
           break;
   
           case 'service':
