@@ -56,9 +56,10 @@ bot.start((context)=>{
       switch(context.update.callback_query.data){
           case 'info':
             //command.PostUsers('Braulio','Picon','2','brauliopicon@');
-            var usuario = await command.GetUsers('1');
-            console.log(usuario);
-            //usuario.then(function )
+            var usuario = command.GetUsers('1');
+            usuario.then( (usuario) =>{
+                console.log(usuario);
+            })
             context.reply('Hola'+'  '+ usuario.nombre);
           break;
   
