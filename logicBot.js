@@ -74,7 +74,14 @@ bot.hears('Alo', (context) => {
           break;
               
           case 'mision':
-          context.reply('Asumo que aqui se consume Firebase y el servidor de Synergy');
+            var mision = commandCommands.GetCommands('mision');
+            mision.then((mision)=>{
+                console.log(mision);
+              }).catch(err => {
+                console.log('No se reconoce Mision',err);
+              })
+
+              context.reply('Probando Mision');
           break;
           
           case 'vision':
