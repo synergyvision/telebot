@@ -1,5 +1,6 @@
 const Telegraf = require('telegraf');
-const command = require('./commandBot');
+const commandUsers = require('./commandUser');
+const commandCommands = require('./commandFromFirebase');
 const Markup = require('telegraf/markup');
 
 
@@ -21,9 +22,11 @@ bot.start((context)=>{
     )
   });
   
-  bot.hears('Alo', (context) => {
+/*
+bot.hears('Alo', (context) => {
   return context.reply('Si estamos funcionando')
   });
+*/
   
   bot.hears('Informacion', (context) => {
       let botoms = [
@@ -55,15 +58,15 @@ bot.start((context)=>{
       
       switch(context.update.callback_query.data){
           case 'info':
-            //command.PostUsers('Braulio','Picon','2','brauliopicon@');
-            var usuario = command.GetUsers('1');
+            commandUsers.PostUsers('Braulio','Zambrano','2','brauliopicon@');
+            /*var usuario = commandUsers.GetUsers('1');
             usuario.then( (usuario) =>{
                 //console.log(usuario);
-                context.reply('Hola'+'  '+ usuario.nombre);
+                context.reply('Hola'+' '+ usuario.nombre+' '+usuario.apellido);
             }).catch(err => {
                 console.log('Error saludando', err);
               });
-            
+            */
           break;
   
           case 'service':
