@@ -3,6 +3,7 @@ const db = require('./firebaseBot');
 module.exports = {
 
     GetCommands : function (comandType){
+
         var refCommands = db.Database().collection('Acciones').doc(comandType);
 
         return refCommands.get()
@@ -11,7 +12,7 @@ module.exports = {
                 console.log('No existe el comando!');
             }else{
                 var accion = doc.data();
-                    return accion;
+                return accion;
             }
         })
         .catch(err =>{
