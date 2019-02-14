@@ -48,7 +48,7 @@ bot.hears('Alo', (context) => {
       ]
   
       let message = Markup.inlineKeyboard(botoms).extra()
-  
+      
       bot.telegram.sendMessage(context.from.id,'Conocenos', message)
   });
   
@@ -75,13 +75,14 @@ bot.hears('Alo', (context) => {
               
           case 'mision':
             var mision = commandCommands.GetCommands('mision');
-            mision.then((mision)=>{
-                console.log(mision);
-              }).catch(err => {
-                console.log('No se reconoce Mision',err);
-              })
+             mision.then((mision)=>{
+                 console.log(mision);
+                 context.reply(mision.contenido);
+               }).catch(err => {
+                 console.log('No se reconoce Mision',err);
+             });
 
-              context.reply('Probando Mision');
+             
           break;
           
           case 'vision':
