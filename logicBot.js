@@ -58,7 +58,7 @@ bot.hears('Alo', (context) => {
       
       switch(context.update.callback_query.data){
           case 'info':
-            commandUsers.PostUsers('Braulio','Zambrano','2','brauliopicon@');
+            //commandUsers.PostUsers('Braulio','Zambrano','2','brauliopicon@');
             /*var usuario = commandUsers.GetUsers('1');
             usuario.then( (usuario) =>{
                 //console.log(usuario);
