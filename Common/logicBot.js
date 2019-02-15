@@ -76,7 +76,7 @@ bot.hears('Alo', (context) => {
           case 'mision':
             var mision = commandCommands.GetCommands('mision');
              mision.then((mision)=>{
-                 console.log(mision);
+                 //console.log(mision);
                  context.reply(mision.contenido);
                }).catch(err => {
                  console.log('No se reconoce Mision',err);
