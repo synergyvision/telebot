@@ -25,7 +25,7 @@ var database = admin.firestore();
 module.exports ={
   
   Database : function() { 
-  return database;
+    return database;
   }
 
 

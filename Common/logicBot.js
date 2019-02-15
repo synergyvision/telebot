@@ -13,47 +13,59 @@ const bot = new Telegraf(API_TOKEN);
 bot.telegram.setWebhook(`${URL}bot${API_TOKEN}`);
 bot.startWebhook(`/bot${API_TOKEN}`, null, PORT);
 
+
+module.exports = {
+
+  TeleBot : function(){
+    return bot;  
+  }
+
+};
+
+
 bot.start((context)=>{
     console.log('synergyvisionbot started', context.from.id);
     return context.reply(
-        'Bienvenidos a Synergy Vision. \n '+
+        'Bienvenidos a Synergy Vision \n'+
         'Para conocer mas sobre nosotros \n'+
         'escriba la palabra Informacion'
     )
-  });
+});
   
 /*
 bot.hears('Alo', (context) => {
   return context.reply('Si estamos funcionando')
   });
 */
+
+/*
+bot.hears('Informacion', (context) => {
+      let buttons = [
   
-  bot.hears('Informacion', (context) => {
-      let botoms = [
-  
-          botoms2 = [
+          buttons2 = [
           Markup.callbackButton('Información General', 'info'),
           Markup.callbackButton('Servicios', 'service')
           ],
   
-          botoms3 = [
+          buttons3 = [
           Markup.callbackButton('Misión', 'mision'),
           Markup.callbackButton('Visión', 'vision')
           ],
   
-          botoms4 = [
+          buttons4 = [
           Markup.callbackButton('Unetenos', 'joinus'),
           Markup.callbackButton('Visitanos', 'visitus')
           ]
       ]
   
-      let message = Markup.inlineKeyboard(botoms).extra()
+      let message = Markup.inlineKeyboard(buttons).extra()
       
       bot.telegram.sendMessage(context.from.id,'Conocenos', message)
-  });
-  
+});
+*/  
 
-  bot.on('callback_query', (context) =>{
+/*
+bot.on('callback_query', (context) =>{
       context.answerCbQuery()
       
       switch(context.update.callback_query.data){
@@ -67,7 +79,7 @@ bot.hears('Alo', (context) => {
                 console.log('Error saludando', err);
               });
             */
-          break;
+/*          break;
   
           case 'service':
           context.reply('Asumo que aqui se consume Firebase y el servidor de Synergy');
@@ -77,7 +89,7 @@ bot.hears('Alo', (context) => {
             var mision = commandCommands.GetCommands('mision');
              mision.then((mision)=>{
                  //console.log(mision);
-                 context.reply(mision.contenido);
+                 context.reply(mision.content);
                }).catch(err => {
                  console.log('No se reconoce Mision',err);
              });
@@ -97,8 +109,8 @@ bot.hears('Alo', (context) => {
           context.reply('Asumo que aqui se consume Firebase y el servidor de Synergy');
           break;
       }
-  });
-
+});
+*/
 
 
  
