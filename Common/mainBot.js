@@ -25,7 +25,7 @@ bot.TeleBot().hears('Informacion', (context) => {
 
     let message = Markup.inlineKeyboard(buttons).extra()
     
-    bot.telegram.sendMessage(context.from.id,'Conocenos', message)
+    bot.TeleBot().telegram.sendMessage(context.from.id,'Conocenos', message)
 });
 
 
