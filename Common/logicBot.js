@@ -38,7 +38,7 @@ bot.hears('Alo', (context) => {
   });
 */
 
-/*
+
 bot.hears('Informacion', (context) => {
       let buttons = [
   
@@ -62,10 +62,10 @@ bot.hears('Informacion', (context) => {
       
       bot.telegram.sendMessage(context.from.id,'Conocenos', message)
 });
-*/  
+ 
 
-/*
-bot.on('callback_query', (context) =>{
+
+/*bot.on('callback_query', (context) =>{
       context.answerCbQuery()
       
       switch(context.update.callback_query.data){
@@ -109,8 +109,8 @@ bot.on('callback_query', (context) =>{
           context.reply('Asumo que aqui se consume Firebase y el servidor de Synergy');
           break;
       }
-});
-*/
+});*/
+
 
 
  

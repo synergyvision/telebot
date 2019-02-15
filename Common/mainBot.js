@@ -1,35 +1,4 @@
 const bot = require('../Common/logicBot');
-const commandUsers = require('../Command/commandUser');
-const commandCommands = require('../Command/commandActions');
-const Markup = require('telegraf/markup');
-
-bot.TeleBot().telegram.setWebhook(`${URL}bot${API_TOKEN}`);
-bot.TeleBot().startWebhook(`/bot${API_TOKEN}`, null, PORT);
-
-bot.TeleBot().hears('Informacion', (context) => {
-    let buttons = [
-
-        buttons2 = [
-        Markup.callbackButton('Información General', 'info'),
-        Markup.callbackButton('Servicios', 'service')
-        ],
-
-        buttons3 = [
-        Markup.callbackButton('Misión', 'mision'),
-        Markup.callbackButton('Visión', 'vision')
-        ],
-
-        buttons4 = [
-        Markup.callbackButton('Unetenos', 'joinus'),
-        Markup.callbackButton('Visitanos', 'visitus')
-        ]
-    ]
-
-    let message = Markup.inlineKeyboard(buttons).extra()
-    
-    bot.TeleBot().telegram.sendMessage(context.from.id,'Conocenos', message)
-});
-
 
 bot.TeleBot().on('callback_query', (context) =>{
     context.answerCbQuery()
