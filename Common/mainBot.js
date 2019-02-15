@@ -3,6 +3,8 @@ const commandUsers = require('../Command/commandUser');
 const commandCommands = require('../Command/commandActions');
 const Markup = require('telegraf/markup');
 
+bot.TeleBot().telegram.setWebhook(`${URL}bot${API_TOKEN}`);
+bot.TeleBot().startWebhook(`/bot${API_TOKEN}`, null, PORT);
 
 bot.TeleBot().hears('Informacion', (context) => {
     let buttons = [
