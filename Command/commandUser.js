@@ -1,4 +1,4 @@
-const db = require('./firebaseBot');
+const db = require('../Persistence/firebaseBot');
 
 module.exports = {
 

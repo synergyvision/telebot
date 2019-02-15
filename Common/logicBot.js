@@ -1,6 +1,6 @@
 const Telegraf = require('telegraf');
-const commandUsers = require('./commandUser');
-const commandCommands = require('./commandFromFirebase');
+const commandUsers = require('../Command/commandUser');
+const commandCommands = require('../Command/commandActions');
 const Markup = require('telegraf/markup');
 
 
