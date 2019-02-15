@@ -1,27 +1,16 @@
-const Telegraf = require('telegraf');
+var Telegraf = require('telegraf');
 const commandUsers = require('../Command/commandUser');
 const commandCommands = require('../Command/commandActions');
-const Markup = require('telegraf/markup');
-
+var Markup = require('telegraf/markup');
 
 const API_TOKEN = process.env.BOT_TOKEN || '';
 const PORT = process.env.PORT || 3000;
 const URL = process.env.BOT_URL;
 
-const bot = new Telegraf(API_TOKEN);
+var bot = new Telegraf(API_TOKEN);
 
 bot.telegram.setWebhook(`${URL}bot${API_TOKEN}`);
 bot.startWebhook(`/bot${API_TOKEN}`, null, PORT);
-
-
-module.exports = {
-
-  TeleBot : function(){
-    return bot;  
-  }
-
-};
-
 
 bot.start((context)=>{
     console.log('synergyvisionbot started', context.from.id);
@@ -70,15 +59,7 @@ bot.on('callback_query', (context) =>{
       
       switch(context.update.callback_query.data){
           case 'info':
-            //commandUsers.PostUsers('Braulio','Zambrano','2','brauliopicon@');
-            /*var usuario = commandUsers.GetUsers('1');
-            usuario.then( (usuario) =>{
-                //console.log(usuario);
-                context.reply('Hola'+' '+ usuario.nombre+' '+usuario.apellido);
-            }).catch(err => {
-                console.log('Error saludando', err);
-              });
-            */
+
           break;
   
           case 'service':
@@ -92,13 +73,17 @@ bot.on('callback_query', (context) =>{
                  context.reply(mision.content);
                }).catch(err => {
                  console.log('No se reconoce Mision',err);
-             });
-
-             
+             }); 
           break;
           
           case 'vision':
-          context.reply('Asumo que aqui se consume Firebase y el servidor de Synergy');
+          var vision = commandCommands.GetCommands('vision');
+          vision.then((vision)=>{
+              //console.log(mision);
+              context.reply(vision.content);
+            }).catch(err => {
+              console.log('No se reconoce Mision',err);
+          });
           break;
               
           case 'joinus':
@@ -112,5 +97,11 @@ bot.on('callback_query', (context) =>{
 });
 
 
+module.exports = {
 
+  TeleBot : function(){
+    return bot;  
+  }
+
+};
  
