@@ -88,30 +88,49 @@ bot.on('callback_query', (context) =>{
              joinus.then((joinus) => {
                
               for (let i in joinus){
-                    if (joinus[i] === joinus.insertid){
+
+                    switch(joinus[i]){
+
+                      case joinus.insertid :
                       console.log(' if insertid'+ joinus[i]);
-                      //context.reply(joinus[i]);
-                    }else{
-                      if (joinus[i] === joinus.insertname){
-                        console.log(' if insertname'+ joinus[i]);
-                        //context.reply(joinus[i]);
-                      }else {
-                        if (joinus[i] === joinus.insertlastname){
-                          console.log(' if insertlastname'+ joinus[i]);
-                          //context.reply(joinus[i]);
-                        }else {
-                          if (joinus[i] === joinus.insertEmail){
-                            console.log(' if insertEmail'+ joinus[i]);
-                            //context.reply(joinus[i]);
-                          }
-                        }
-                      }
+                      break;
+
+                      case joinus.insertname :
+                      console.log(' if insertname'+ joinus[i]);
+                      break;
+
+                      case joinus.insertEmail :
+                      console.log(' if insertEmail'+ joinus[i]);
+                      break;
+
+                      case joinus.insertlastname :
+                      console.log(' if insertlastname'+ joinus[i]);
+                      break;
+
                     }
 
+                    /*if (joinus[i] === joinus.insertid){
+                      //console.log(' if insertid'+ joinus[i]);
+                      context.reply(joinus[i]);
+                    };
+                      
+                    if (joinus[i] === joinus.insertname){
+                      //console.log(' if insertname'+ joinus[i]);
+                    };
+                      context.reply(joinus[i]);
 
+                    if (joinus[i] === joinus.insertlastname){
+                      //console.log(' if insertlastname'+ joinus[i]);
+                      context.reply(joinus[i]);
+                    };
 
+                    if (joinus[i] === joinus.insertEmail){
+                      //console.log(' if insertEmail'+ joinus[i]);
+                      context.reply(joinus[i]);
+                    };*/
+               
                 }
-                console.log(joinus);
+
               }).catch(err => {
                  console.log('No se reconoce Joinus',err);
               });
