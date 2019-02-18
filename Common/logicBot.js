@@ -1,13 +1,13 @@
-var Telegraf = require('telegraf');
+const Telegraf = require('telegraf');
 const commandUsers = require('../Command/commandUser');
 const commandCommands = require('../Command/commandActions');
-var Markup = require('telegraf/markup');
+const Markup = require('telegraf/markup');
 
 const API_TOKEN = process.env.BOT_TOKEN || '';
 const PORT = process.env.PORT || 3000;
 const URL = process.env.BOT_URL;
 
-var bot = new Telegraf(API_TOKEN);
+const bot = new Telegraf(API_TOKEN);
 
 bot.telegram.setWebhook(`${URL}bot${API_TOKEN}`);
 bot.startWebhook(`/bot${API_TOKEN}`, null, PORT);
