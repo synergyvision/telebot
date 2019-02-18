@@ -62,7 +62,7 @@ bot.on('callback_query', (context) =>{
           case 'info':
             var info = commandCommands.GetCommands('info');
              info.then((info)=>{
-                 context.reply('Información General\n' + 
+                 context.reply('\nInformación General\n\n' + 
                                'Direccion: '+ info.address + ' \n' +
                                'Contactos: ' + info.cellphone+ '    ' + 
                                                info.roomphone +' \n' +
