@@ -58,8 +58,15 @@ bot.on('callback_query', (context) =>{
       context.answerCbQuery()
       
       switch(context.update.callback_query.data){
-          //case 'info':
-          //break;
+          
+          case 'info':
+            var info = commandCommands.GetCommands('info');
+             info.then((info)=>{
+                 context.reply(info);
+             }).catch(err => {
+                 console.log('No se reconoce Informacion General',err);
+             }); 
+          break;
   
           case 'service':
           context.reply('Asumo que aqui se consume Firebase y el servidor de Synergy');
@@ -92,43 +99,26 @@ bot.on('callback_query', (context) =>{
                     switch(joinus[i]){
 
                       case joinus.insertid :
-                      console.log('CASE if insertid'+ joinus[i]);
+                      //console.log('CASE if insertid'+ joinus[i]);
+                      context.reply(joinus[i]);
                       break;
 
                       case joinus.insertname :
-                      console.log('CASE if insertname'+ joinus[i]);
+                      //console.log('CASE if insertname'+ joinus[i]);
+                      context.reply(joinus[i]);
                       break;
 
                       case joinus.insertEmail :
-                      console.log('CASE if insertEmail'+ joinus[i]);
+                      //console.log('CASE if insertEmail'+ joinus[i]);
+                      context.reply(joinus[i]);
                       break;
 
                       case joinus.insertlastname :
-                      console.log('CASE if insertlastname'+ joinus[i]);
+                      //console.log('CASE if insertlastname'+ joinus[i]);
+                      context.reply(joinus[i]);
                       break;
 
-                    }
-
-                    /*if (joinus[i] === joinus.insertid){
-                      //console.log(' if insertid'+ joinus[i]);
-                      context.reply(joinus[i]);
-                    };
-                      
-                    if (joinus[i] === joinus.insertname){
-                      //console.log(' if insertname'+ joinus[i]);
-                    };
-                      context.reply(joinus[i]);
-
-                    if (joinus[i] === joinus.insertlastname){
-                      //console.log(' if insertlastname'+ joinus[i]);
-                      context.reply(joinus[i]);
-                    };
-
-                    if (joinus[i] === joinus.insertEmail){
-                      //console.log(' if insertEmail'+ joinus[i]);
-                      context.reply(joinus[i]);
-                    };*/
-               
+                    }               
                 }
 
               }).catch(err => {
