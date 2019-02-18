@@ -62,7 +62,12 @@ bot.on('callback_query', (context) =>{
           case 'info':
             var info = commandCommands.GetCommands('info');
              info.then((info)=>{
-                 context.reply(info);
+                 context.reply('Información General\n' + 
+                               'Direccion: '+ info.address + ' \n' +
+                               'Contactos: ' + info.cellphone+ '    ' + 
+                                               info.roomphone +' \n' +
+                               'Horario de Atención' + info.schedule
+                  );
              }).catch(err => {
                  console.log('No se reconoce Informacion General',err);
              }); 
