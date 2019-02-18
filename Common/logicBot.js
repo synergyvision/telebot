@@ -68,25 +68,28 @@ bot.on('callback_query', (context) =>{
           case 'mision':
             var mision = commandCommands.GetCommands('mision');
              mision.then((mision)=>{
-                 //console.log(mision);
                  context.reply(mision.content);
-               }).catch(err => {
+             }).catch(err => {
                  console.log('No se reconoce Mision',err);
              }); 
           break;
           
           case 'vision':
-          var vision = commandCommands.GetCommands('vision');
-          vision.then((vision)=>{
-              //console.log(mision);
-              context.reply(vision.content);
-            }).catch(err => {
-              console.log('No se reconoce Mision',err);
-          });
+            var vision = commandCommands.GetCommands('vision');
+             vision.then((vision)=>{
+                context.reply(vision.content);
+              }).catch(err => {
+                 console.log('No se reconoce Vision',err);
+              }); 
           break;
               
           case 'joinus':
-          context.reply('Asumo que aqui se consume Firebase y el servidor de Synergy');
+            var joinus = commandCommands.GetCommands('joinus');
+             joinus.then((joinus) => {
+                console.log(joinus);
+              }).catch(err => {
+                 console.log('No se reconoce Joinus',err);
+              });
           break;
           
           case 'visitus':
