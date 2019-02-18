@@ -88,23 +88,21 @@ bot.on('callback_query', (context) =>{
              joinus.then((joinus) => {
                
               for (let i in joinus){
-                  console.log('entro al for');
-                  //console.log('Hace algo'+ joinus[i]);
-                  //context.reply(joinus[i]);
                     if (joinus[i] === joinus.insertid){
-                      console.log('ENTRO AL IF insertid');
+                      console.log(' if insertid'+ joinus[i]);
+                      //context.reply(joinus[i]);
                     }else{
-                      if (joinus[i].hasOwnProperty('insertname')){
-                        console.log('insertname');
-                        context.reply(joinus.insertname);
+                      if (joinus[i] === joinus.insertname){
+                        console.log(' if insertname'+ joinus[i]);
+                        //context.reply(joinus[i]);
                       }else {
-                        if (joinus[i].hasOwnProperty('insertlastname')){
-                          console.log('insertlastname');
-                          context.reply(joinus.insertlastname);
+                        if (joinus[i] === joinus.insertlastname){
+                          console.log(' if insertlastname'+ joinus[i]);
+                          //context.reply(joinus[i]);
                         }else {
-                          if (joinus[i].hasOwnProperty('insertEmail')){
-                            console.log('insertEmail');
-                            context.reply(joinus.insertEmail);
+                          if (joinus[i] === joinus.insertEmail){
+                            console.log(' if insertEmail'+ joinus[i]);
+                            //context.reply(joinus[i]);
                           }
                         }
                       }
