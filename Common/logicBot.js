@@ -86,22 +86,32 @@ bot.on('callback_query', (context) =>{
           case 'joinus':
             var joinus = commandCommands.GetCommands('joinus');
              joinus.then((joinus) => {
-                for (let i in joinus){
+               
+              for (let i in joinus){
+                  console.log('entro al for');
+
                     if (joinus[i].hasOwnProperty('insertid')){
+                      console.log('insertid');
                       context.reply(joinus.insertid);
                     }else{
                       if (joinus[i].hasOwnProperty('insertname')){
+                        console.log('insertname');
                         context.reply(joinus.insertname);
                       }else {
                         if (joinus[i].hasOwnProperty('insertlastname')){
+                          console.log('insertlastname');
                           context.reply(joinus.insertlastname);
                         }else {
                           if (joinus[i].hasOwnProperty('insertEmail')){
+                            console.log('insertEmail');
                             context.reply(joinus.insertEmail);
                           }
                         }
                       }
                     }
+
+
+
                 }
                 console.log(joinus);
               }).catch(err => {
