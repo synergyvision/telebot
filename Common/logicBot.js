@@ -58,9 +58,8 @@ bot.on('callback_query', (context) =>{
       context.answerCbQuery()
       
       switch(context.update.callback_query.data){
-          case 'info':
-
-          break;
+          //case 'info':
+          //break;
   
           case 'service':
           context.reply('Asumo que aqui se consume Firebase y el servidor de Synergy');
