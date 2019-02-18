@@ -92,19 +92,19 @@ bot.on('callback_query', (context) =>{
                     switch(joinus[i]){
 
                       case joinus.insertid :
-                      console.log(' if insertid'+ joinus[i]);
+                      console.log('CASE if insertid'+ joinus[i]);
                       break;
 
                       case joinus.insertname :
-                      console.log(' if insertname'+ joinus[i]);
+                      console.log('CASE if insertname'+ joinus[i]);
                       break;
 
                       case joinus.insertEmail :
-                      console.log(' if insertEmail'+ joinus[i]);
+                      console.log('CASE if insertEmail'+ joinus[i]);
                       break;
 
                       case joinus.insertlastname :
-                      console.log(' if insertlastname'+ joinus[i]);
+                      console.log('CASE if insertlastname'+ joinus[i]);
                       break;
 
                     }
