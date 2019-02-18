@@ -86,6 +86,23 @@ bot.on('callback_query', (context) =>{
           case 'joinus':
             var joinus = commandCommands.GetCommands('joinus');
              joinus.then((joinus) => {
+                for (let i in joinus){
+                    if (joinus[i].hasOwnProperty('insertid')){
+                      context.reply(joinus.insertid);
+                    }else{
+                      if (joinus[i].hasOwnProperty('insertname')){
+                        context.reply(joinus.insertname);
+                      }else {
+                        if (joinus[i].hasOwnProperty('insertlastname')){
+                          context.reply(joinus.insertlastname);
+                        }else {
+                          if (joinus[i].hasOwnProperty('insertEmail')){
+                            context.reply(joinus.insertEmail);
+                          }
+                        }
+                      }
+                    }
+                }
                 console.log(joinus);
               }).catch(err => {
                  console.log('No se reconoce Joinus',err);
