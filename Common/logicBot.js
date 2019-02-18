@@ -90,6 +90,7 @@ bot.on('callback_query', (context) =>{
               for (let i in joinus){
                   console.log('entro al for');
                   console.log('Hace algo'+ joinus[i]);
+                  context.reply(joinus[i]);
                     if (joinus[i].hasOwnProperty('insertid')){
                       console.log('insertid');
                       context.reply(joinus.insertid);
