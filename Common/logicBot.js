@@ -28,7 +28,7 @@ bot.hears('Alo', (context) => {
 */
 
 
-bot.hears('Informacion', (context) => {
+bot.hears(/Informaci[óo]n/i, (context) => {
       let buttons = [
   
           buttons2 = [
