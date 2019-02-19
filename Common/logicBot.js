@@ -97,16 +97,17 @@ bot.on('callback_query', (context) =>{
               
           case 'joinus':
             var joinus = commandCommands.GetCommands('joinus');
-             joinus.then((joinus) => {
-               
-              for (let i in joinus){
+             joinus.then((joinus) => { 
+              var i = joinus.length();
+              while (i > 0){
 
                     switch(joinus[i]){
 
                       case joinus.insertid :
-                      context.reply(joinus[i]);
-                      bot.on(joinus.insertid, (context) =>{
+                       context.reply(joinus[i]);
+                       bot.hears(/^(.*)$/, (context) =>{
                        var id = context.message;
+                       i++;
                        console.log(id);
                       });
                       
@@ -119,20 +120,23 @@ bot.on('callback_query', (context) =>{
                       break;
 
                       case joinus.insertname :
-                      context.reply(joinus[i]);
-                      bot.hears(/^(.*)$/, ({match}) => {
-                        var name = match[1];
-                        //reply("Me dijiste "+match[1]+" y no sé que hacer.")
-                        console.log(name +'  ' + match[1] + '\n');
+                       context.reply(joinus[i]);
+                       bot.hears(/^(.*)$/, (context) =>{
+                        var id = context.message;
+                        i++;
+                        console.log(id);
                       });
+
                       break;
 
                       case joinus.insertEmail :
                       context.reply(joinus[i]);
+                      i++;
                       break;
 
                       case joinus.insertlastname :
                       context.reply(joinus[i]);
+                      i++;
                       break;
 
                     }               
