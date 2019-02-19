@@ -47,9 +47,9 @@ bot.hears('Informacion', (context) => {
           ]
       ]
   
-      let message = Markup.inlineKeyboard(buttons).extra()
+       let message = Markup.inlineKeyboard(buttons).extra();
       
-      bot.telegram.sendMessage(context.from.id,'Conocenos', message)
+       bot.telegram.sendMessage(context.from.id,'Conocenos', message)
 });
  
 
@@ -114,6 +114,11 @@ bot.on('callback_query', (context) =>{
 
                       case joinus.insertname :
                       context.reply(joinus[i]);
+                      bot.hears(/^(.*)$/, ({match}) => {
+                        var name = match[1];
+                        //reply("Me dijiste "+match[1]+" y no sé que hacer.")
+                        console.log(name +'  ' + match[1] + '\n');
+                      });
                       break;
 
                       case joinus.insertEmail :
