@@ -98,16 +98,14 @@ bot.on('callback_query', (context) =>{
           case 'joinus':
             var joinus = commandCommands.GetCommands('joinus');
              joinus.then((joinus) => { 
-              var i = Object.keys(joinus).length;
-              while (i > 0){
 
+              for (let i in joinus){
                     switch(joinus[i]){
 
                       case joinus.insertid :
                        context.reply(joinus[i]);
                        bot.hears(/^(.*)$/, (context) =>{
                        var id = context.message;
-                       i++;
                        console.log(id);
                       });
                       
