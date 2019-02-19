@@ -20,12 +20,6 @@ bot.start((context)=>{
         'escriba la palabra Informacion'
     )
 });
-  
-/*
-bot.hears('Alo', (context) => {
-  return context.reply('Si estamos funcionando')
-  });
-*/
 
 
 bot.hears(/Informaci[óo]n/i, (context) => {
@@ -107,34 +101,27 @@ bot.on('callback_query', (context) =>{
                        bot.hears(/^(.*)$/, (context) =>{
                        var id = context.message;
                        console.log(id);
-                      });
-                      
-                      
-                      //bot.hears(/^(.*)$/, ({match}) => {
-                      //  var id = match[1];
-                        //reply("Me dijiste "+match[1]+" y no sé que hacer.")
-                      //  console.log(id +'  ' + match[1] + '\n');
-                      //});
+                       });
                       break;
 
                       case joinus.insertname :
                        context.reply(joinus[i]);
                        bot.hears(/^(.*)$/, (context) =>{
                         var id = context.message;
-                        i++;
+                        
                         console.log(id);
                       });
 
                       break;
 
                       case joinus.insertEmail :
-                      context.reply(joinus[i]);
-                      i++;
+                       context.reply(joinus[i]);
+                      
                       break;
 
                       case joinus.insertlastname :
-                      context.reply(joinus[i]);
-                      i++;
+                       context.reply(joinus[i]);
+                      
                       break;
 
                     }               
@@ -146,7 +133,7 @@ bot.on('callback_query', (context) =>{
           break;
           
           case 'visitus':
-          context.reply('Asumo que aqui se consume Firebase y el servidor de Synergy');
+           context.reply('Asumo que aqui se consume Firebase y el servidor de Synergy');
           break;
       }
 });
