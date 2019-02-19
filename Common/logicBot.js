@@ -105,6 +105,11 @@ bot.on('callback_query', (context) =>{
 
                       case joinus.insertid :
                       context.reply(joinus[i]);
+                      bot.hears(/^(.*)$/, ({match}) => {
+                        var id = match[1];
+                        //reply("Me dijiste "+match[1]+" y no sé que hacer.")
+                        console.log(id +'  ' + match[1] + '\n');
+                      });
                       break;
 
                       case joinus.insertname :
