@@ -98,7 +98,7 @@ bot.on('callback_query', (context) =>{
           case 'joinus':
             var joinus = commandCommands.GetCommands('joinus');
              joinus.then((joinus) => { 
-              var i = _.keys(joinus).length;
+              var i = Object.keys(joinus).length;
               while (i > 0){
 
                     switch(joinus[i]){
