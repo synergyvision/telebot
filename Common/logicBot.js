@@ -105,7 +105,7 @@ bot.on('callback_query', (context) =>{
 
                       case joinus.insertid :
                       context.reply(joinus[i]);
-                      bot.onText(joinus.insertid, (context) =>{
+                      bot.on(joinus.insertid, (context) =>{
                        var id = context.message;
                        console.log(id);
                       });
