@@ -6,32 +6,17 @@ const commandUsers = require('../Command/commandUser');
 const commandCommands = require('../Command/commandActions');
 const Markup = require('telegraf/markup');
 
-const join = new WizardScene('join-us',
-(ctx) => {
-  ctx.reply('Step 1')
-  ctx.flow.wizard.next()
-},
-(ctx) => {
-  ctx.reply('Step 2')
-  ctx.flow.wizard.next()
-},
-(ctx) => {
-  ctx.reply('Done')
-  ctx.flow.leave()
-}
-);
 
 const API_TOKEN = process.env.BOT_TOKEN || '';
 const PORT = process.env.PORT || 3000;
 const URL = process.env.BOT_URL;
 
-const flow = new TelegrafFlow([join], {defaultScene: 'join-us'})
 const bot = new Telegraf(API_TOKEN);
 
 bot.telegram.setWebhook(`${URL}bot${API_TOKEN}`);
 bot.startWebhook(`/bot${API_TOKEN}`, null, PORT);
 
-//bot.use(Telegraf());
+
 
 bot.start((context)=>{
     console.log('synergyvisionbot started', context.from.id);
@@ -45,33 +30,20 @@ bot.start((context)=>{
 
 
 
-var joinus = commandCommands.GetCommands('joinus');
-joinus.then((joinus)=>{
 
-  const join = new WizardScene('join_us',
+const join = new WizardScene('join_us',
+context =>{
+  context.reply('Introduzca su Cédula');
+  var joinID = context.message.text;
+  console.log(joinID + '  '+ context.message.text);
+  return context.wizard.next();
+},
 
-    context =>{
-      context.reply(joinus.insertid);
-      var joinID = context.message.text;
-      console.log(joinID + '  '+ context.message.text);
-      return context.wizard.next();
-    },
+context =>{
+  return context.scene.leave();
+}
 
-    context =>{
-      return context.scene.leave();
-    }
-
-  );
-}).catch(err => {
-  console.log('No se reconoce Unetenos',err);
-}); 
-
-bot.help((context) => {
-context.reply('hola');
-});
-
-
-
+);
 
 bot.hears(/Informaci[óo]n/i, (context) => {
       let buttons = [
@@ -141,7 +113,7 @@ bot.on('callback_query', (context) =>{
           break;
               
           case 'joinus':
-              const stage = new Stage([join],{join_us});
+              const stage = new Stage([join],{default: 'join_us'});
               bot.use(session());
               bot.use(stage.middleware());
           //bot.use(flow.middleware());
@@ -193,12 +165,4 @@ bot.on('callback_query', (context) =>{
       }
 });
 
-
-module.exports = {
-
-  TeleBot : function(){
-    return bot;  
-  }
-
-};
  
