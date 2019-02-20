@@ -107,40 +107,45 @@ bot.on('callback_query', (context) =>{
 
               context =>{
                 context.wizard.state.id = context.message.text;
-                var joinID = context.wizard.state.id;
-                console.log('joinID '+joinID + '  '+ context.message.text);
+                //var joinID = context.wizard.state.id;
+                //console.log('joinID '+joinID + '  '+ context.message.text);
                 context.reply(joinus.insertname);
                 return context.wizard.next();
               },
 
               context =>{
                 context.wizard.state.name = context.message.text;
-                var joinName = context.wizard.state.name;
-                console.log(joinID+' joinName '+joinName + '  '+ context.message.text);
+                //var joinName = context.wizard.state.name;
+                //console.log(joinID+' joinName '+joinName + '  '+ context.message.text);
                 context.reply(joinus.insertlastname);
                 return context.wizard.next();
               },
 
               context =>{
                 context.wizard.state.lastname = context.message.text;
-                var joinLastname = context.wizard.state.lastname;
-                console.log('joinLastname '+joinLastname + '  '+ context.message.text);
+                //var joinLastname = context.wizard.state.lastname;
+                //console.log('joinLastname '+joinLastname + '  '+ context.message.text);
                 context.reply(joinus.insertEmail);
                 return context.wizard.next();
               },
 
               context =>{
                 context.wizard.state.email = context.message.text;
-                var joinEmail = context.wizard.state.email;
-                console.log('joinEmail '+joinEmail + '  '+ context.message.text);
-                commandUsers.PostUsers(joinName,joinLastname,joinID,joinEmail);
+                const joinID = context.wizard.state.id;
+                const joinName = context.wizard.state.name;
+                const joinLastname = context.wizard.state.lastname;
+                const joinEmail = context.wizard.state.email;
+                console.log(joinID,joinName,joinLastname,joinEmail);
+                //var joinEmail = context.wizard.state.email;
+                //console.log('joinEmail '+joinEmail + '  '+ context.message.text);
+                /*commandUsers.PostUsers(joinName,joinLastname,joinID,joinEmail);
                 var users = commandUsers.GetUsers(joinID);
                 users.then((users)=>{
                   context.reply('Sr(a). '+users.name+ ' '+users.lastname+' '+
                   'envie su curriculum vitae a -------');
                 }).catch(err => {
                   console.log('No se reconoce users',err);
-              });
+              });*/
                 return context.scene.leave();
               }
               
