@@ -1,11 +1,11 @@
 const Telegraf = require('telegraf');
 const TelegrafFlow = require('telegraf-flow');
-const {JoinScene} = TelegrafFlow;
+const {WizardScene} = TelegrafFlow;
 const commandUsers = require('../Command/commandUser');
 const commandCommands = require('../Command/commandActions');
 const Markup = require('telegraf/markup');
 
-const join = new JoinScene('join-us',
+const join = new WizardScene('join-us',
 (ctx) => {
   ctx.reply('Step 1')
   ctx.flow.wizard.next()
