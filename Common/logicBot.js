@@ -1,6 +1,7 @@
 const Telegraf = require('telegraf');
-const TelegrafFlow = require('telegraf-flow');
-const {WizardScene} = TelegrafFlow;
+const WizardScene = require('telegraf/scenes/wizard');
+const Stage = require('telegraf/stage');
+const session = require('telegraf/session');
 const commandUsers = require('../Command/commandUser');
 const commandCommands = require('../Command/commandActions');
 const Markup = require('telegraf/markup');
@@ -41,9 +42,36 @@ bot.start((context)=>{
     )
 });
 
+
+
+
+var joinus = commandCommands.GetCommands('joinus');
+joinus.then((joinus)=>{
+
+  const join = new WizardScene('join_us',
+
+    context =>{
+      context.reply(joinus.insertid);
+      var joinID = context.message.text;
+      console.log(joinID + '  '+ context.message.text);
+      return context.wizard.next();
+    },
+
+    context =>{
+      return context.scene.leave();
+    }
+
+  );
+}).catch(err => {
+  console.log('No se reconoce Unetenos',err);
+}); 
+
 bot.help((context) => {
 context.reply('hola');
 });
+
+
+
 
 bot.hears(/Informaci[óo]n/i, (context) => {
       let buttons = [
@@ -113,7 +141,10 @@ bot.on('callback_query', (context) =>{
           break;
               
           case 'joinus':
-          bot.use(flow.middleware());
+              const stage = new Stage([join],{join_us});
+              bot.use(session());
+              bot.use(stage.middleware());
+          //bot.use(flow.middleware());
           /*var joinus = commandCommands.GetCommands('joinus');
              joinus.then((joinus) => { 
 
