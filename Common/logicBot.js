@@ -30,7 +30,7 @@ const bot = new Telegraf(API_TOKEN);
 bot.telegram.setWebhook(`${URL}bot${API_TOKEN}`);
 bot.startWebhook(`/bot${API_TOKEN}`, null, PORT);
 
-bot.use(Telegraf.memorySession());
+//bot.use(Telegraf());
 
 bot.start((context)=>{
     console.log('synergyvisionbot started', context.from.id);
