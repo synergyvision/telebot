@@ -25,8 +25,8 @@ module.exports = {
     PostUsers : function(name,lastname,id,email){
       
         var setUsers = {
-            nombre: name,
-            apellido: lastname,
+            name: name,
+            lastname: lastname,
             identification: id,
             email: email
         }

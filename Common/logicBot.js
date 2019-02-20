@@ -129,6 +129,14 @@ bot.on('callback_query', (context) =>{
               context =>{
                 var joinEmail = context.message.text;
                 console.log('joinEmail '+joinEmail + '  '+ context.message.text);
+                commandUsers.PostUsers(joinName,joinLastname,joinID,joinEmail);
+                var users = commandUsers.GetUsers(joinID);
+                users.then((users)=>{
+                  context.reply('Sr(a). '+users.name+ ' '+users.lastname+' '+
+                  'envie su curriculum vitae a -------');
+                }).catch(err => {
+                  console.log('No se reconoce users',err);
+              });
                 return context.scene.leave();
               }
               
