@@ -97,6 +97,7 @@ bot.on('callback_query', (context) =>{
           break;
               
           case 'joinus':
+            context.reply('Por favor para unirse escriba la palabra unirse');
             var joinus = commandCommands.GetCommands('joinus');
             joinus.then((joinus)=>{
               const join = new WizardScene('join_us',
@@ -107,24 +108,18 @@ bot.on('callback_query', (context) =>{
 
               context =>{
                 context.wizard.state.id = context.message.text;
-                //var joinID = context.wizard.state.id;
-                //console.log('joinID '+joinID + '  '+ context.message.text);
                 context.reply(joinus.insertname);
                 return context.wizard.next();
               },
 
               context =>{
                 context.wizard.state.name = context.message.text;
-                //var joinName = context.wizard.state.name;
-                //console.log(joinID+' joinName '+joinName + '  '+ context.message.text);
                 context.reply(joinus.insertlastname);
                 return context.wizard.next();
               },
 
               context =>{
                 context.wizard.state.lastname = context.message.text;
-                //var joinLastname = context.wizard.state.lastname;
-                //console.log('joinLastname '+joinLastname + '  '+ context.message.text);
                 context.reply(joinus.insertEmail);
                 return context.wizard.next();
               },
@@ -136,8 +131,6 @@ bot.on('callback_query', (context) =>{
                 const joinLastname = context.wizard.state.lastname;
                 const joinEmail = context.wizard.state.email;
                 console.log(joinID,joinName,joinLastname,joinEmail);
-                //var joinEmail = context.wizard.state.email;
-                //console.log('joinEmail '+joinEmail + '  '+ context.message.text);
                 commandUsers.PostUsers(joinName,joinLastname,joinID,joinEmail);
                 sleep(1000);
                 var users = commandUsers.GetUsers(joinID);
