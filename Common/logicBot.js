@@ -32,17 +32,16 @@ bot.start((context)=>{
 
 
 const join = new WizardScene('join_us',
-context =>{
+ context =>{
   context.reply('Introduzca su Cédula');
   var joinID = context.message.text;
   console.log(joinID + '  '+ context.message.text);
   return context.wizard.next();
-},
+ },
 
-context =>{
+ context =>{
   return context.scene.leave();
-}
-
+ }
 );
 
 bot.hears(/Informaci[óo]n/i, (context) => {
@@ -114,8 +113,11 @@ bot.on('callback_query', (context) =>{
               
           case 'joinus':
               const stage = new Stage([join],{default: 'join_us'});
+              console.log('despues del stage');
               bot.use(session());
+              console.log('despues del session');
               bot.use(stage.middleware());
+              console.log('despues del middleware');
           //bot.use(flow.middleware());
           /*var joinus = commandCommands.GetCommands('joinus');
              joinus.then((joinus) => { 
