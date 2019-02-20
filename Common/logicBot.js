@@ -1,12 +1,30 @@
 const Telegraf = require('telegraf');
+const TelegrafFlow = require('../');
+const {JoinScene} = TelegrafFlow;
 const commandUsers = require('../Command/commandUser');
 const commandCommands = require('../Command/commandActions');
 const Markup = require('telegraf/markup');
+
+const join = new JoinScene('join-us',
+(ctx) => {
+  ctx.reply('Step 1')
+  ctx.flow.wizard.next()
+},
+(ctx) => {
+  ctx.reply('Step 2')
+  ctx.flow.wizard.next()
+},
+(ctx) => {
+  ctx.reply('Done')
+  ctx.flow.leave()
+}
+);
 
 const API_TOKEN = process.env.BOT_TOKEN || '';
 const PORT = process.env.PORT || 3000;
 const URL = process.env.BOT_URL;
 
+const flow = new TelegrafFlow([join], {defaultScene: 'join-us'})
 const bot = new Telegraf(API_TOKEN);
 
 bot.telegram.setWebhook(`${URL}bot${API_TOKEN}`);
@@ -93,7 +111,9 @@ bot.on('callback_query', (context) =>{
           break;
               
           case 'joinus':
-            var joinus = commandCommands.GetCommands('joinus');
+          bot.use(Telegraf.memorySession());
+          bot.use(flow.middleware());
+          /*var joinus = commandCommands.GetCommands('joinus');
              joinus.then((joinus) => { 
 
               for (let i in joinus){
@@ -132,7 +152,7 @@ bot.on('callback_query', (context) =>{
 
               }).catch(err => {
                  console.log('No se reconoce Joinus',err);
-              });
+              });*/
           break;
           
           case 'visitus':
