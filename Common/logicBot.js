@@ -5,7 +5,7 @@ const session = require('telegraf/session');
 const commandUsers = require('../Command/commandUser');
 const commandCommands = require('../Command/commandActions');
 const Markup = require('telegraf/markup');
-
+var sleep = require('system-sleep');
 
 const API_TOKEN = process.env.BOT_TOKEN || '';
 const PORT = process.env.PORT || 3000;
@@ -139,6 +139,7 @@ bot.on('callback_query', (context) =>{
                 //var joinEmail = context.wizard.state.email;
                 //console.log('joinEmail '+joinEmail + '  '+ context.message.text);
                 commandUsers.PostUsers(joinName,joinLastname,joinID,joinEmail);
+                sleep(1000);
                 var users = commandUsers.GetUsers(joinID);
                 users.then((users)=>{
                   context.reply('Sr(a). '+users.name+ ' '+users.lastname+' '+
