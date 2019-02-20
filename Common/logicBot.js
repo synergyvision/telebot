@@ -132,7 +132,7 @@ bot.on('callback_query', (context) =>{
                 const joinEmail = context.wizard.state.email;
                 console.log(joinID,joinName,joinLastname,joinEmail);
                 commandUsers.PostUsers(joinName,joinLastname,joinID,joinEmail);
-                sleep(1000);
+                sleep(1);
                 var users = commandUsers.GetUsers(joinID);
                 users.then((users)=>{
                   context.reply('Sr(a). '+users.name+ ' '+users.lastname+' '+
