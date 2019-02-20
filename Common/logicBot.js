@@ -30,6 +30,8 @@ const bot = new Telegraf(API_TOKEN);
 bot.telegram.setWebhook(`${URL}bot${API_TOKEN}`);
 bot.startWebhook(`/bot${API_TOKEN}`, null, PORT);
 
+bot.use(Telegraf.memorySession());
+
 bot.start((context)=>{
     console.log('synergyvisionbot started', context.from.id);
     return context.reply(
@@ -111,7 +113,6 @@ bot.on('callback_query', (context) =>{
           break;
               
           case 'joinus':
-          bot.use(Telegraf.memorySession());
           bot.use(flow.middleware());
           /*var joinus = commandCommands.GetCommands('joinus');
              joinus.then((joinus) => { 
