@@ -106,28 +106,32 @@ bot.on('callback_query', (context) =>{
               },
 
               context =>{
-                var joinID = context.message.text;
+                context.wizard.state.id = context.message.text;
+                var joinID = context.wizard.state.id;
                 console.log('joinID '+joinID + '  '+ context.message.text);
                 context.reply(joinus.insertname);
                 return context.wizard.next();
               },
 
               context =>{
-                var joinName = context.message.text;
+                context.wizard.state.name = context.message.text;
+                var joinName = context.wizard.state.name;
                 console.log(joinID+' joinName '+joinName + '  '+ context.message.text);
                 context.reply(joinus.insertlastname);
                 return context.wizard.next();
               },
 
               context =>{
-                var joinLastname = context.message.text;
+                context.wizard.state.lastname = context.message.text;
+                var joinLastname = context.wizard.state.lastname;
                 console.log('joinLastname '+joinLastname + '  '+ context.message.text);
                 context.reply(joinus.insertEmail);
                 return context.wizard.next();
               },
 
               context =>{
-                var joinEmail = context.message.text;
+                context.wizard.state.email = context.message.text;
+                var joinEmail = context.wizard.state.email;
                 console.log('joinEmail '+joinEmail + '  '+ context.message.text);
                 commandUsers.PostUsers(joinName,joinLastname,joinID,joinEmail);
                 var users = commandUsers.GetUsers(joinID);
