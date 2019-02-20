@@ -114,7 +114,7 @@ bot.on('callback_query', (context) =>{
 
               context =>{
                 var joinName = context.message.text;
-                console.log('joinName '+joinName + '  '+ context.message.text);
+                console.log(joinID+' joinName '+joinName + '  '+ context.message.text);
                 context.reply(joinus.insertlastname);
                 return context.wizard.next();
               },
