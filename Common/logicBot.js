@@ -1,5 +1,5 @@
 const Telegraf = require('telegraf');
-const TelegrafFlow = require('../');
+const TelegrafFlow = require('telegraf-flow');
 const {JoinScene} = TelegrafFlow;
 const commandUsers = require('../Command/commandUser');
 const commandCommands = require('../Command/commandActions');
