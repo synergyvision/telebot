@@ -34,12 +34,13 @@ bot.start((context)=>{
 const join = new WizardScene('join_us',
  context =>{
   context.reply('Introduzca su Cédula');
-  var joinID = context.message.text;
-  console.log(joinID + '  '+ context.message.text);
+  
   return context.wizard.next();
  },
 
  context =>{
+  var joinID = context.message.text;
+  console.log(joinID + '  '+ context.message.text);
   return context.scene.leave();
  }
 );
