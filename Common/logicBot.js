@@ -21,6 +21,9 @@ bot.start((context)=>{
     )
 });
 
+bot.help((context) => {
+context.reply('hola');
+});
 
 bot.hears(/Informaci[óo]n/i, (context) => {
       let buttons = [
