@@ -138,14 +138,14 @@ bot.on('callback_query', (context) =>{
                 console.log(joinID,joinName,joinLastname,joinEmail);
                 //var joinEmail = context.wizard.state.email;
                 //console.log('joinEmail '+joinEmail + '  '+ context.message.text);
-                /*commandUsers.PostUsers(joinName,joinLastname,joinID,joinEmail);
+                commandUsers.PostUsers(joinName,joinLastname,joinID,joinEmail);
                 var users = commandUsers.GetUsers(joinID);
                 users.then((users)=>{
                   context.reply('Sr(a). '+users.name+ ' '+users.lastname+' '+
                   'envie su curriculum vitae a -------');
                 }).catch(err => {
                   console.log('No se reconoce users',err);
-              });*/
+              });
                 return context.scene.leave();
               }
               
