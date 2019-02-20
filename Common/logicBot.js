@@ -29,22 +29,6 @@ bot.start((context)=>{
 
 
 
-
-
-const join = new WizardScene('join_us',
- context =>{
-  context.reply('Introduzca su Cédula');
-  
-  return context.wizard.next();
- },
-
- context =>{
-  var joinID = context.message.text;
-  console.log(joinID + '  '+ context.message.text);
-  return context.scene.leave();
- }
-);
-
 bot.hears(/Informaci[óo]n/i, (context) => {
       let buttons = [
   
@@ -113,53 +97,48 @@ bot.on('callback_query', (context) =>{
           break;
               
           case 'joinus':
-              const stage = new Stage([join],{default: 'join_us'});
-              console.log('despues del stage');
-              bot.use(session());
-              console.log('despues del session');
-              bot.use(stage.middleware());
-              console.log('despues del middleware');
-          //bot.use(flow.middleware());
-          /*var joinus = commandCommands.GetCommands('joinus');
-             joinus.then((joinus) => { 
+            var joinus = commandCommands.GetCommands('joinus');
+            joinus.then((joinus)=>{
+              const join = new WizardScene('join_us',
+              context =>{
+                context.reply(joinus.insertid);
+                return context.wizard.next();
+              },
 
-              for (let i in joinus){
-                    switch(joinus[i]){
+              context =>{
+                var joinID = context.message.text;
+                console.log('joinID '+joinID + '  '+ context.message.text);
+                context.reply(joinus.insertname);
+                return context.wizard.next();
+              },
 
-                      case joinus.insertid :
-                       context.reply(joinus[i]);
-                       bot.hears(/^(.*)$/, (context) =>{
-                       var id = context.message;
-                       console.log(id);
-                       });
-                      break;
+              context =>{
+                var joinName = context.message.text;
+                console.log('joinName '+joinName + '  '+ context.message.text);
+                context.reply(joinus.insertlastname);
+                return context.wizard.next();
+              },
 
-                      case joinus.insertname :
-                       context.reply(joinus[i]);
-                       bot.hears(/^(.*)$/, (context) =>{
-                        var id = context.message;
-                        
-                        console.log(id);
-                      });
+              context =>{
+                var joinLastname = context.message.text;
+                console.log('joinLastname '+joinLastname + '  '+ context.message.text);
+                context.reply(joinus.insertEmail);
+                return context.wizard.next();
+              },
 
-                      break;
-
-                      case joinus.insertEmail :
-                       context.reply(joinus[i]);
-                      
-                      break;
-
-                      case joinus.insertlastname :
-                       context.reply(joinus[i]);
-                      
-                      break;
-
-                    }               
-                }
-
-              }).catch(err => {
-                 console.log('No se reconoce Joinus',err);
-              });*/
+              context =>{
+                var joinEmail = context.message.text;
+                console.log('joinEmail '+joinEmail + '  '+ context.message.text);
+                return context.scene.leave();
+              }
+              
+            );
+            const stage = new Stage([join],{default: 'join_us'});
+            bot.use(session());
+            bot.use(stage.middleware());
+            }).catch(err => {
+              console.log('No se reconoce Joinus',err);
+           });
           break;
           
           case 'visitus':
