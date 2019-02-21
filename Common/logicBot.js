@@ -25,7 +25,13 @@ bot.telegram.setWebhook(`${URL}bot${API_TOKEN}`);
 bot.startWebhook(`/bot${API_TOKEN}`, null, PORT);
 
 bot.start((context)=>{
-  actionStart.StartReply(context);
+  //actionStart.StartReply(context);
+  var start = commandCommands.GetCommands('start');
+  start.then((start)=>{
+  return context.reply(start.content);
+  }).catch(err =>{
+      console.log('No se reconoce Start',err);
+  });
 });
 
 bot.hears(/Informaci[óo]n/i, (context) => {   
@@ -93,12 +99,12 @@ bot.on('callback_query', (context) =>{
                   },
 
                   context =>{
-                    var user = commandUsers.GetUsers(context.wizard.state.id);
-                    user.then(user => {
-                      context.reply('Sr(a)'+user.name+'envie su CV a -----')
-                    }).catch(err =>{
-                      console.log('No se reconoce User', err);
-                    });
+                   // var user = commandUsers.GetUsers(context.wizard.state.id);
+                   // user.then(user => {
+                   //   context.reply('Sr(a)'+user.name+'envie su CV a -----')
+                   // }).catch(err =>{
+                   //   console.log('No se reconoce User', err);
+                   // });
                     bot.telegram.sendMessage(context.from.id,'Conocenos', button.GetButtons());
                     return context.scene.leave();
                   }
