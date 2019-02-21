@@ -6,7 +6,7 @@ const session = require('telegraf/session');
 const button = require('../Common/buttonsBot'); 
 const commandUsers = require('../Command/commandUser');
 const commandCommands = require('../Command/commandActions');
-//const Markup = require('telegraf/markup');
+const actionService = require('../Common/actionServiceBot');
 
 const API_TOKEN = process.env.BOT_TOKEN || '';
 const PORT = process.env.PORT || 3000;
@@ -30,29 +30,8 @@ bot.start((context)=>{
 
 
 
-bot.hears(/Informaci[óo]n/i, (context) => {
-     
-  /*let buttons = [
-  
-          buttons2 = [
-          Markup.callbackButton('Información General', 'info'),
-          Markup.callbackButton('Servicios', 'service')
-          ],
-  
-          buttons3 = [
-          Markup.callbackButton('Misión', 'mision'),
-          Markup.callbackButton('Visión', 'vision')
-          ],
-  
-          buttons4 = [
-          Markup.callbackButton('Unetenos', 'joinus'),
-          Markup.callbackButton('Visitanos', 'visitus')
-          ]
-      ]
-  
-       let message = Markup.inlineKeyboard(buttons).extra();*/
-      
-       bot.telegram.sendMessage(context.from.id,'Conocenos', button.GetButtons());
+bot.hears(/Informaci[óo]n/i, (context) => {   
+  bot.telegram.sendMessage(context.from.id,'Conocenos', button.GetButtons());
 });
  
 
@@ -77,7 +56,8 @@ bot.on('callback_query', (context) =>{
           break;
   
           case 'service':
-          context.reply('Asumo que aqui se consume Firebase y el servidor de Synergy');
+          actionService.ServiceReply(context);
+          //context.reply('Asumo que aqui se consume Firebase y el servidor de Synergy');
           break;
               
           case 'mision':
