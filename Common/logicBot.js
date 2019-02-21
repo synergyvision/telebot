@@ -87,13 +87,19 @@ bot.on('callback_query', (context) =>{
                     const joinName = context.wizard.state.name;
                     const joinLastname = context.wizard.state.lastname;
                     const joinEmail = context.wizard.state.email;
-                    commandUsers.PostUsers(joinName,joinLastname,joinID,joinEmail);                 
+                    commandUsers.PostUsers(joinName,joinLastname,joinID,joinEmail); 
+                    //context.reply('Sr(a)'+JoinName+'envie su CV a -----');                
                     return context.wizard.next();
 
                   },
 
                   context =>{
-                    context.reply('Sr(a)'+JoinName+'envie su CV a -----');
+                    var user = commandUsers.GetUsers(context.wizard.state.id);
+                    user.then(user => {
+                      context('Sr(a)'+user.name+'envie su CV a -----')
+                    }).catch(err =>{
+                      console.log('No se reconoce User', err);
+                    });
                     bot.telegram.sendMessage(context.from.id,'Conocenos', button.GetButtons());
                     return context.scene.leave();
                   }
