@@ -2,10 +2,11 @@ const Telegraf = require('telegraf');
 const WizardScene = require('telegraf/scenes/wizard');
 const Stage = require('telegraf/stage');
 const session = require('telegraf/session');
+
+const button = require('../Common/buttonsBot'); 
 const commandUsers = require('../Command/commandUser');
 const commandCommands = require('../Command/commandActions');
-const Markup = require('telegraf/markup');
-var sleep = require('system-sleep');
+//const Markup = require('telegraf/markup');
 
 const API_TOKEN = process.env.BOT_TOKEN || '';
 const PORT = process.env.PORT || 3000;
@@ -24,13 +25,14 @@ bot.start((context)=>{
         'Bienvenidos a Synergy Vision \n'+
         'Para conocer mas sobre nosotros \n'+
         'escriba la palabra Informacion'
-    )
+    );
 });
 
 
 
 bot.hears(/Informaci[óo]n/i, (context) => {
-      let buttons = [
+     
+  /*let buttons = [
   
           buttons2 = [
           Markup.callbackButton('Información General', 'info'),
@@ -48,9 +50,9 @@ bot.hears(/Informaci[óo]n/i, (context) => {
           ]
       ]
   
-       let message = Markup.inlineKeyboard(buttons).extra();
+       let message = Markup.inlineKeyboard(buttons).extra();*/
       
-       bot.telegram.sendMessage(context.from.id,'Conocenos', message)
+       bot.telegram.sendMessage(context.from.id,'Conocenos', button.GetButtons());
 });
  
 
@@ -130,9 +132,7 @@ bot.on('callback_query', (context) =>{
                 const joinName = context.wizard.state.name;
                 const joinLastname = context.wizard.state.lastname;
                 const joinEmail = context.wizard.state.email;
-                console.log(joinID,joinName,joinLastname,joinEmail);
                 commandUsers.PostUsers(joinName,joinLastname,joinID,joinEmail);
-                sleep(100);
                 var users = commandUsers.GetUsers(joinID);
                 users.then((users)=>{
                   context.reply('Sr(a). '+users.name+ ' '+users.lastname+' '+
