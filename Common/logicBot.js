@@ -28,7 +28,7 @@ bot.start((context)=>{
   //actionStart.StartReply(context);
   var start = commandCommands.GetCommands('start');
   start.then((start)=>{
-  return context.reply(start.content);
+  context.reply(start.content);
   }).catch(err =>{
       console.log('No se reconoce Start',err);
   });
