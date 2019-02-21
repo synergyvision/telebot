@@ -6,7 +6,9 @@ const session = require('telegraf/session');
 const button = require('../Common/buttonsBot'); 
 const commandUsers = require('../Command/commandUser');
 const commandCommands = require('../Command/commandActions');
-const actionService = require('../Common/actionServiceBot');
+const actionService = require('../Action/actionServiceBot');
+const actionStart = require('../Action/actionStartBot');
+const actionInfo = require('../Action/actionInfoBot');
 
 const API_TOKEN = process.env.BOT_TOKEN || '';
 const PORT = process.env.PORT || 3000;
@@ -20,12 +22,13 @@ bot.startWebhook(`/bot${API_TOKEN}`, null, PORT);
 
 
 bot.start((context)=>{
-    console.log('synergyvisionbot started', context.from.id);
-    return context.reply(
-        'Bienvenidos a Synergy Vision \n'+
-        'Para conocer mas sobre nosotros \n'+
-        'escriba la palabra Informacion'
-    );
+  actionStart.StartReply(context);
+   // console.log('synergyvisionbot started', context.from.id);
+   // return context.reply(
+   //     'Bienvenidos a Synergy Vision \n'+
+   //     'Para conocer mas sobre nosotros \n'+
+   //     'escriba la palabra Informacion'
+   // );
 });
 
 
@@ -42,7 +45,8 @@ bot.on('callback_query', (context) =>{
       switch(context.update.callback_query.data){
           
           case 'info':
-            var info = commandCommands.GetCommands('info');
+            actionInfo.InfoReply(context);
+            /*var info = commandCommands.GetCommands('info');
              info.then((info)=>{
                  context.reply('\nInformación General\n\n' + 
                                'Direccion: '+ info.address + ' \n' +
@@ -52,12 +56,11 @@ bot.on('callback_query', (context) =>{
                   );
              }).catch(err => {
                  console.log('No se reconoce Informacion General',err);
-             }); 
+             }); */
           break;
   
           case 'service':
           actionService.ServiceReply(context);
-          //context.reply('Asumo que aqui se consume Firebase y el servidor de Synergy');
           break;
               
           case 'mision':
