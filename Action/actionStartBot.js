@@ -1,8 +1,15 @@
+const commandCommands = require('../Command/commandActions');
+
 module.exports = {
+    
     StartReply: function(context){
-        context.reply(
-        'Bienvenidos a Synergy Vision \n'+
-        'Para conocer mas sobre nosotros \n'+
-        'escriba la palabra Informacion');
+
+        var start = commandCommands.GetCommands('start');
+        start.then((start)=>{
+        context.reply(start.content);
+        }).catch(err =>{
+            console.log('No se reconoce Start',err);
+        });
+        
     }
 };
