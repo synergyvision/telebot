@@ -25,14 +25,16 @@ bot.telegram.setWebhook(`${URL}bot${API_TOKEN}`);
 bot.startWebhook(`/bot${API_TOKEN}`, null, PORT);
 
 bot.start((context)=>{
+  context.reply('Bienvenidos a Synergy Vision \n' +
+                'Para conocer mas sobre nosotros ingresa la palabra "información"');
   //actionStart.StartReply(context);
-  var start = commandCommands.GetCommands('start');
-  start.then((start)=>{
-    console.log(start);
-  context.reply(start.content);
-  }).catch(err =>{
-      console.log('No se reconoce Start',err);
-  });
+  //var start = commandCommands.GetCommands('start');
+  //start.then((start)=>{
+  //  console.log(start.content);
+  //context.reply(start.content);
+  //}).catch(err =>{
+  //    console.log('No se reconoce Start',err);
+  //});
 });
 
 bot.hears(/Informaci[óo]n/i, (context) => {   
