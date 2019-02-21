@@ -39,22 +39,18 @@ bot.on('callback_query', (context) =>{
           
           case 'info':
             actionInfo.InfoReply(context);
-            bot.telegram.sendMessage(context.from.id,'Conocenos', button.GetButtons());
           break;
   
           case 'service':
             actionService.ServiceReply(context);
-            bot.telegram.sendMessage(context.from.id,'Conocenos', button.GetButtons());
           break;
               
           case 'mision':
             actionMision.MisionReply(context);
-            bot.telegram.sendMessage(context.from.id,'Conocenos', button.GetButtons());
           break;
           
           case 'vision':
             actionVision.VisionReply(context);
-            bot.telegram.sendMessage(context.from.id,'Conocenos', button.GetButtons());
           break;
               
           case 'joinus':
@@ -85,23 +81,23 @@ bot.on('callback_query', (context) =>{
                     return context.wizard.next();
                   },
 
-                  context =>{
+                  context =>{ 
                     context.wizard.state.email = context.message.text;
                     const joinID = context.wizard.state.id;
                     const joinName = context.wizard.state.name;
                     const joinLastname = context.wizard.state.lastname;
                     const joinEmail = context.wizard.state.email;
-                    commandUsers.PostUsers(joinName,joinLastname,joinID,joinEmail);
-                    var users = commandUsers.GetUsers(joinID);
-                    users.then((users)=>{
-                      context.reply('Sr(a). '+users.name+ ' '+users.lastname+' '+
-                      'envie su curriculum vitae a -------');
-                    }).catch(err => {
-                      console.log('No se reconoce users',err);
-                  });
+                    commandUsers.PostUsers(joinName,joinLastname,joinID,joinEmail);                 
+                    return context.wizard.next();
+
+                  },
+
+                  context =>{
+                    context.reply('Sr(a)'+JoinName+'envie su CV a -----');
                     bot.telegram.sendMessage(context.from.id,'Conocenos', button.GetButtons());
                     return context.scene.leave();
-              });
+                  }
+                  );
 
             const stage = new Stage([join],{default: 'join_us'});
             bot.use(session());
@@ -113,7 +109,6 @@ bot.on('callback_query', (context) =>{
           
           case 'visitus':
             actionVisit.VisitusReply(context);
-            bot.telegram.sendMessage(context.from.id,'Conocenos', button.GetButtons());
           break;
       }
 });
