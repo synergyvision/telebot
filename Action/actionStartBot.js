@@ -1,7 +1,7 @@
 const commandCommands = require('../Command/commandActions');
 
 module.exports = {
-    
+
     StartReply: function(context){
 
         var start = commandCommands.GetCommands('start');

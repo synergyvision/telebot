@@ -25,7 +25,7 @@ bot.telegram.setWebhook(`${URL}bot${API_TOKEN}`);
 bot.startWebhook(`/bot${API_TOKEN}`, null, PORT);
 
 bot.start((context)=>{
-  actionStart.StartReply(context);
+  return actionStart.StartReply(context);
 });
 
 bot.hears(/Informaci[óo]n/i, (context) => {   
@@ -39,18 +39,22 @@ bot.on('callback_query', (context) =>{
           
           case 'info':
             actionInfo.InfoReply(context);
+            bot.telegram.sendMessage(context.from.id,'Conocenos', button.GetButtons());
           break;
   
           case 'service':
             actionService.ServiceReply(context);
+            bot.telegram.sendMessage(context.from.id,'Conocenos', button.GetButtons());
           break;
               
           case 'mision':
             actionMision.MisionReply(context);
+            bot.telegram.sendMessage(context.from.id,'Conocenos', button.GetButtons());
           break;
           
           case 'vision':
             actionVision.VisionReply(context);
+            bot.telegram.sendMessage(context.from.id,'Conocenos', button.GetButtons());
           break;
               
           case 'joinus':
@@ -95,7 +99,7 @@ bot.on('callback_query', (context) =>{
                     }).catch(err => {
                       console.log('No se reconoce users',err);
                   });
-                  bot.telegram.sendMessage(context.from.id,'Conocenos', button.GetButtons());
+                    bot.telegram.sendMessage(context.from.id,'Conocenos', button.GetButtons());
                     return context.scene.leave();
               });
 
@@ -109,6 +113,7 @@ bot.on('callback_query', (context) =>{
           
           case 'visitus':
             actionVisit.VisitusReply(context);
+            bot.telegram.sendMessage(context.from.id,'Conocenos', button.GetButtons());
           break;
       }
 });
