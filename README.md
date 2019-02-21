@@ -7,5 +7,4 @@ Su despliegue se llevara a cabo en el Paas Heroku
 
 Y como herramienta de persistencia se usara la Base de Datos No-SQL Firebase
 
-Link para acceder al Bot en Telegram  
-t.me/VisionTeleBot 
+Link para acceder al Bot en Telegram =>  t.me/VisionTeleBot 
