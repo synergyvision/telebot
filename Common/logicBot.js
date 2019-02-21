@@ -96,21 +96,23 @@ bot.on('callback_query', (context) =>{
                     const joinName = context.wizard.state.name;
                     const joinLastname = context.wizard.state.lastname;
                     const joinEmail = context.wizard.state.email;
-                    commandUsers.PostUsers(joinName,joinLastname,joinID,joinEmail);         
-                    return context.wizard.next();
+                    commandUsers.PostUsers(joinName,joinLastname,joinID,joinEmail);
+                    bot.telegram.sendMessage(context.from.id,'Conocenos', button.GetButtons());
+                    return context.scene.leave();         
+                    //return context.wizard.next();
 
                   },
 
-                  context =>{
+                  //context =>{
                    // var user = commandUsers.GetUsers(context.wizard.state.id);
                    // user.then(user => {
                    //   context.reply('Sr(a)'+user.name+'envie su CV a -----')
                    // }).catch(err =>{
                    //   console.log('No se reconoce User', err);
                    // });
-                    bot.telegram.sendMessage(context.from.id,'Conocenos', button.GetButtons());
-                    return context.scene.leave();
-                  }
+                   // bot.telegram.sendMessage(context.from.id,'Conocenos', button.GetButtons());
+                   // return context.scene.leave();
+                  //}
                   );
 
             const stage = new Stage([join],{default: 'join_us'});
