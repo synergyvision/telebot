@@ -97,6 +97,8 @@ bot.on('callback_query', (context) =>{
                     const joinLastname = context.wizard.state.lastname;
                     const joinEmail = context.wizard.state.email;
                     commandUsers.PostUsers(joinName,joinLastname,joinID,joinEmail);
+                    context.reply('Sr(a)'+joinName+' '+joinLastname+
+                    ' por favor envie su curriculum vitae a ---------');
                     bot.telegram.sendMessage(context.from.id,'Conocenos', button.GetButtons());
                     return context.scene.leave();         
                     //return context.wizard.next();
