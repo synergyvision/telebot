@@ -96,7 +96,7 @@ bot.on('callback_query', (context) =>{
                   context =>{
                     var user = commandUsers.GetUsers(context.wizard.state.id);
                     user.then(user => {
-                      context('Sr(a)'+user.name+'envie su CV a -----')
+                      context.reply('Sr(a)'+user.name+'envie su CV a -----')
                     }).catch(err =>{
                       console.log('No se reconoce User', err);
                     });
