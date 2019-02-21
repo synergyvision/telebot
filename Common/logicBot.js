@@ -25,7 +25,7 @@ bot.telegram.setWebhook(`${URL}bot${API_TOKEN}`);
 bot.startWebhook(`/bot${API_TOKEN}`, null, PORT);
 
 bot.start((context)=>{
-  return actionStart.StartReply(context);
+  actionStart.StartReply(context);
 });
 
 bot.hears(/Informaci[óo]n/i, (context) => {   
@@ -87,8 +87,7 @@ bot.on('callback_query', (context) =>{
                     const joinName = context.wizard.state.name;
                     const joinLastname = context.wizard.state.lastname;
                     const joinEmail = context.wizard.state.email;
-                    commandUsers.PostUsers(joinName,joinLastname,joinID,joinEmail); 
-                    //context.reply('Sr(a)'+JoinName+'envie su CV a -----');                
+                    commandUsers.PostUsers(joinName,joinLastname,joinID,joinEmail);         
                     return context.wizard.next();
 
                   },

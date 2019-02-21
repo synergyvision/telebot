@@ -6,7 +6,7 @@ module.exports = {
 
         var start = commandCommands.GetCommands('start');
         start.then((start)=>{
-        context.reply(start.content);
+        return context.reply(start.content);
         }).catch(err =>{
             console.log('No se reconoce Start',err);
         });
