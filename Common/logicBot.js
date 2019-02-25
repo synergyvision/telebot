@@ -9,7 +9,6 @@ const commandUsers = require('../Command/commandUser');
 const commandCommands = require('../Command/commandActions');
 
 const actionService = require('../Action/actionServiceBot');
-const actionStart = require('../Action/actionStartBot');
 const actionInfo = require('../Action/actionInfoBot');
 const actionMision = require('../Action/actionMisionBot');
 const actionVision = require('../Action/actionVisionBot');
@@ -27,14 +26,6 @@ bot.startWebhook(`/bot${API_TOKEN}`, null, PORT);
 bot.start((context)=>{
   context.reply('Bienvenidos a Synergy Vision \n' +
                 'Para conocer mas sobre nosotros ingresa la palabra "información"');
-  //actionStart.StartReply(context);
-  //var start = commandCommands.GetCommands('start');
-  //start.then((start)=>{
-  //  console.log(start.content);
-  //context.reply(start.content);
-  //}).catch(err =>{
-  //    console.log('No se reconoce Start',err);
-  //});
 });
 
 bot.hears(/Informaci[óo]n/i, (context) => {   
@@ -98,7 +89,7 @@ bot.on('callback_query', (context) =>{
                     const joinEmail = context.wizard.state.email;
                     commandUsers.PostUsers(joinName,joinLastname,joinID,joinEmail);
                     context.reply('Sr(a)'+joinName+' '+joinLastname+
-                    ' por favor envie su curriculum vitae a ---------');
+                    ' por favor envie su curriculum vitae a '+joinus.synergyemail);
                     bot.telegram.sendMessage(context.from.id,'Conocenos', button.GetButtons());
                     return context.scene.leave();  
                   },

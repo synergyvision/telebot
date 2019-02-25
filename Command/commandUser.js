@@ -10,7 +10,6 @@ module.exports = {
                   console.log('No existe el Usuario!');
                 } else {
                     var usuario = doc.data();
-                    //console.log('Documento usuario:', usuario);
                     return usuario;
                 }
               })
