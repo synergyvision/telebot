@@ -3,9 +3,7 @@ const db = require('../Persistence/firebaseBot');
 module.exports = {
 
     GetCommands : function (comandType){
-
         var refCommands = db.Database().collection('Acciones').doc(comandType);
-
         return refCommands.get()
         .then(doc => {
             if (!doc.exists){

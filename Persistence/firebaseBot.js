@@ -1,6 +1,5 @@
 var admin = require("firebase-admin");
 
-
 var serviceAccount = {
   type: process.env.FIREBASE_TYPE,
   project_id: process.env.FIREBASE_PROJECTID,
@@ -12,7 +11,6 @@ var serviceAccount = {
   token_uri: process.env.FIREBASE_TOKENURI,
   auth_provider_x509_cert_url: process.env.FIREBASE_AUTHPROVIDER,
   client_x509_cert_url: process.env.FIREBASE_CLIENT
-
 };
 
 admin.initializeApp({
@@ -27,6 +25,5 @@ module.exports ={
   Database : function() { 
     return database;
   }
-
 
 };

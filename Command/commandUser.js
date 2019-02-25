@@ -3,9 +3,7 @@ const db = require('../Persistence/firebaseBot');
 module.exports = {
 
     GetUsers : function (collectionID) {
-
-        var refUsers = db.Database().collection('Usuario').doc(collectionID);
-        
+        var refUsers = db.Database().collection('Usuario').doc(collectionID); 
         return refUsers.get()
         .then(doc => {
                 if (!doc.exists) {
@@ -22,15 +20,13 @@ module.exports = {
         
     },
 
-    PostUsers : function(name,lastname,id,email){
-      
+    PostUsers : function(name,lastname,id,email){      
         var setUsers = {
             name: name,
             lastname: lastname,
             identification: id,
             email: email
         }
-
         var refUsers = db.Database().collection('Usuario').doc(id).set(setUsers);
     },
     

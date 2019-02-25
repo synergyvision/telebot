@@ -1,7 +1,6 @@
 const commandCommands = require('../Command/commandActions');
 
 module.exports = {
-
     MisionReply : function(context){
         var mision = commandCommands.GetCommands('mision');
              mision.then((mision)=>{

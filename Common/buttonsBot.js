@@ -22,7 +22,6 @@ module.exports = {
         ]
     
          let message = Markup.inlineKeyboard(buttons).extra();
-
          return message;
     }
 };
