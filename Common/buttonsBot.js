@@ -23,5 +23,14 @@ module.exports = {
     
          let message = Markup.inlineKeyboard(buttons).extra();
          return message;
+    },
+
+    GetButtonsBack : function(){
+        let buttons = [
+            Markup.callbackButton('Volver al Menú', 'back'),
+        ]
+
+        let message = Markup.inlineKeyboard(buttons).extra();
+        return message;
     }
 };

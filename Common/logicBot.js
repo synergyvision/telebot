@@ -39,22 +39,19 @@ bot.on('callback_query', (context) =>{
           
           case 'info':
             actionInfo.InfoReply(context);
-            bot.telegram.sendMessage(context.from.id,'Conocenos', button.GetButtons());
+            context.reply(button.GetButtonsBack());
           break;
   
           case 'service':
             actionService.ServiceReply(context);
-            bot.telegram.sendMessage(context.from.id,'Conocenos', button.GetButtons());
           break;
               
           case 'mision':
             actionMision.MisionReply(context);
-            bot.telegram.sendMessage(context.from.id,'Conocenos', button.GetButtons());
           break;
           
           case 'vision':
             actionVision.VisionReply(context);
-            bot.telegram.sendMessage(context.from.id,'Conocenos', button.GetButtons());
           break;
               
           case 'joinus':
@@ -110,9 +107,11 @@ bot.on('callback_query', (context) =>{
           
           case 'visitus':
             actionVisit.VisitusReply(context);
-            bot.telegram.sendMessage(context.from.id,'Conocenos', button.GetButtons());
           break;
       }
 });
 
+bot.action('back', context=>{
+  bot.telegram.sendMessage(context.from.id,'Conocenos', button.GetButtons());
+});
  
