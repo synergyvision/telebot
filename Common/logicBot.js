@@ -20,55 +20,6 @@ const URL = process.env.BOT_URL;
 
 const bot = new Telegraf(API_TOKEN);
 
-
-var joinus = commandCommands.GetCommands('joinus');
-
-const join = new WizardScene('join_us',
-
-      joinus.then((joinus)=>{
-          context =>{
-            context.reply(joinus.insertid);
-            return context.wizard.next();
-          },
-
-          context =>{
-            context.wizard.state.id = context.message.text;
-            context.reply(joinus.insertname);
-            return context.wizard.next();
-          },
-
-          context =>{
-            context.wizard.state.name = context.message.text;
-            context.reply(joinus.insertlastname);
-            return context.wizard.next();
-          },
-
-          context =>{
-            context.wizard.state.lastname = context.message.text;
-            context.reply(joinus.insertEmail);
-            return context.wizard.next();
-          },
-
-          context =>{ 
-            context.wizard.state.email = context.message.text;
-            const joinID = context.wizard.state.id;
-            const joinName = context.wizard.state.name;
-            const joinLastname = context.wizard.state.lastname;
-            const joinEmail = context.wizard.state.email;
-            commandUsers.PostUsers(joinName,joinLastname,joinID,joinEmail);
-            context.reply('Sr(a)'+joinName+' '+joinLastname+
-            ' por favor envie su curriculum vitae a '+joinus.synergyemail);
-            //here buttoms
-            return context.scene.leave();  
-          }
-
-        //here config dialog
-      }).catch(err => {
-        console.log('No se reconoce Joinus',err);
-      })
-          
-);
-
 bot.telegram.setWebhook(`${URL}bot${API_TOKEN}`);
 bot.startWebhook(`/bot${API_TOKEN}`, null, PORT);
 
@@ -88,30 +39,78 @@ bot.on('callback_query', (context) =>{
           
           case 'info':
             actionInfo.InfoReply(context);
+            bot.telegram.sendMessage(context.from.id,'Conocenos', button.GetButtons());
           break;
   
           case 'service':
             actionService.ServiceReply(context);
+            bot.telegram.sendMessage(context.from.id,'Conocenos', button.GetButtons());
           break;
               
           case 'mision':
             actionMision.MisionReply(context);
+            bot.telegram.sendMessage(context.from.id,'Conocenos', button.GetButtons());
           break;
           
           case 'vision':
             actionVision.VisionReply(context);
+            bot.telegram.sendMessage(context.from.id,'Conocenos', button.GetButtons());
           break;
               
           case 'joinus':
             context.reply('Por favor para unirse escriba la palabra unirse');
+            var joinus = commandCommands.GetCommands('joinus');
+            joinus.then((joinus)=>{
+              const join = new WizardScene('join_us',
+                  context =>{
+                    context.reply(joinus.insertid);
+                    return context.wizard.next();
+                  },
+
+                  context =>{
+                    context.wizard.state.id = context.message.text;
+                    context.reply(joinus.insertname);
+                    return context.wizard.next();
+                  },
+
+                  context =>{
+                    context.wizard.state.name = context.message.text;
+                    context.reply(joinus.insertlastname);
+                    return context.wizard.next();
+                  },
+
+                  context =>{
+                    context.wizard.state.lastname = context.message.text;
+                    context.reply(joinus.insertEmail);
+                    return context.wizard.next();
+                  },
+
+                  context =>{ 
+                    context.wizard.state.email = context.message.text;
+                    const joinID = context.wizard.state.id;
+                    const joinName = context.wizard.state.name;
+                    const joinLastname = context.wizard.state.lastname;
+                    const joinEmail = context.wizard.state.email;
+                    commandUsers.PostUsers(joinName,joinLastname,joinID,joinEmail);
+                    context.reply('Sr(a)'+joinName+' '+joinLastname+
+                    ' por favor envie su curriculum vitae a '+joinus.synergyemail);
+                    bot.telegram.sendMessage(context.from.id,'Conocenos', button.GetButtons());
+                    return context.scene.leave();  
+                  },
+
+                  );
+
             const stage = new Stage([join],{default: 'join_us'});
             bot.use(session());
             bot.use(stage.middleware());
-            bot.telegram.sendMessage(context.from.id,'Conocenos', button.GetButtons());
+            }).catch(err => {
+              console.log('No se reconoce Joinus',err);
+            });
           break;
           
           case 'visitus':
             actionVisit.VisitusReply(context);
+            bot.telegram.sendMessage(context.from.id,'Conocenos', button.GetButtons());
           break;
       }
 });
