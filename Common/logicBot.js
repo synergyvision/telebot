@@ -70,9 +70,11 @@ bot.action('back', context=>{
   bot.telegram.sendMessage(context.from.id,'Conocenos', button.GetButtons);
 });
  
-bot.action('joinus',(context)=>{
+
+
   var joinus = commandCommands.GetCommands('joinus');
   joinus.then((joinus)=>{
+    bot.action('joinus',(context)=>{
     const join = new WizardScene('join_us',
         context =>{
           context.reply(joinus.insertid);
@@ -115,8 +117,8 @@ bot.action('joinus',(context)=>{
   const stage = new Stage([join],{default: 'join_us'});
   bot.use(session());
   bot.use(stage.middleware());
+  });
   }).catch(err => {
     console.log('No se reconoce Joinus',err);
   });
-  
-});
+
