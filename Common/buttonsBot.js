@@ -4,19 +4,21 @@ module.exports = {
 
     GetButtons : function(){
         let buttons = [
-  
-            buttons2 = [
+            buttons1 = [
             Markup.callbackButton('Información General', 'info'),
-            Markup.callbackButton('Servicios', 'service')
+            ],
+
+            buttons2 = [
+            Markup.callbackButton('Servicios', 'service'),
+            Markup.callbackButton('Misión', 'mision')
             ],
     
             buttons3 = [
-            Markup.callbackButton('Misión', 'mision'),
-            Markup.callbackButton('Visión', 'vision')
+            Markup.callbackButton('Visión', 'vision'),
+            Markup.callbackButton('Unetenos', 'joinus'),
             ],
     
             buttons4 = [
-            Markup.callbackButton('Unetenos', 'joinus'),
             Markup.callbackButton('Visitanos', 'visitus')
             ]
         ]

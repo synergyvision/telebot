@@ -1,20 +1,26 @@
-const request = require('request');
+const rp = require('request-promise');
 
 var header = {
-    key: process.env.SERVER_KEY,
-	value: process.env.SERVER_VALUE				
+    Authorization: process.env.SERVER_VALUE				
 }
 
-var quotes = {
-    url: process.env.SERVER_QUOTES,
+const options = {
+    uri: SERVER_QUOTES,
     headers: header,
     method: 'GET',
+    json: true
 }
 
-request(quotes ,function (error, response, body){
-    if (!error && response.statusCode == 200){
-        var quote = body;
-        console.log(quote);
+module.exports={
+    
+    getData :async function(){
+        try {
+            var body = await rp.get(options);
+            return body;
+        } catch (error) {
+            console.log('Error', error.message);
+        }
+        
     }
-});
 
+}
