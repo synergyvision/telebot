@@ -5,7 +5,7 @@ var header = {
 }
 
 const options = {
-    uri: SERVER_QUOTES,
+    uri: process.env.SERVER_QUOTES,
     headers: header,
     method: 'GET',
     json: true
@@ -18,7 +18,7 @@ module.exports={
             var body = await rp.get(options);
             return body;
         } catch (error) {
-            console.log('Error', error.message);
+            console.log('Error', error);
         }
         
     }
