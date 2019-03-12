@@ -20,6 +20,14 @@ module.exports = {
     
             buttons4 = [
             Markup.callbackButton('Visitanos', 'visitus')
+            ],
+
+            buttons5 = [
+            Markup.callbackButton('Cotizaciones','quotes'),
+            ],
+
+            buttons6 = [
+            Markup.callbackButton('Instrumentos Financieros','insfin'),
             ]
         ]
     
