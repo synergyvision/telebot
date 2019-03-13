@@ -14,7 +14,10 @@ const actionInfo = require('../Action/actionInfoBot');
 const actionMision = require('../Action/actionMisionBot');
 const actionVision = require('../Action/actionVisionBot');
 const actionVisit = require('../Action/actionVisitBot');
+const actionQuotes = require('../Action/actionQuotesBot');
 const actionInstrument = require ('../Action/actionInstrumentBot');
+
+const extractdata = require('../Service/extractDataServerBot'); 
 
 const API_TOKEN = process.env.BOT_TOKEN || '';
 const PORT = process.env.PORT || 3000;
@@ -112,12 +115,23 @@ bot.on('callback_query', (context) =>{
           break;
 
           case 'insfin':
-            actionInstrument.InstrumentSpecificReply(context);
+            context.reply('Indique la pala');
+            //actionInstrument.InstrumentSpecificReply(context);
+          break;
+
+          case 'quotes':
+          actionQuotes.GeneralInstrument(context);
           break;
       }
 });
 
+
+bot.hears(/bond/i,(context,match)=>{
+    extractdata.showByInstrumentGeneralData(match[1],context);
+});
+
+/*
 bot.action('back', context=>{
   bot.telegram.sendMessage(context.from.id,'Conocenos', button.GetButtons());
-});
+});*/
  
