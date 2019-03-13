@@ -48,14 +48,13 @@ module.exports = {
                     context.reply(value.displayName);
                         _.forEach(value.instrument,function(value){
                             if (value.displayName != undefined){
-                                let a = [value.displayName, 
-                                        value.value.displayValue,
-                                        value.source,
-                                        value.time.displayTime,
-                                        value.variation.value.displayValue,
-                                        value.variation.percentage.displayValue
-                                        ];
-                                context.reply(a);
+ 
+                                        
+                                context.reply(                               
+                                    value.displayName+'                               '+value.value.displayValue+'\n'+
+                                    value.date.displayDate+' '+value.time.displayTime+' '+value.source+
+                                    '      '+value.variation.value.displayValue+' '+value.variation.percentage.displayValue
+                                    );
                             }
                             
                         });
