@@ -115,7 +115,7 @@ bot.on('callback_query', (context) =>{
           break;
 
           case 'insfin':
-            context.reply('Indique la pala');
+            //context.reply('Indique la pala');
             //actionInstrument.InstrumentSpecificReply(context);
           break;
 
@@ -123,11 +123,6 @@ bot.on('callback_query', (context) =>{
           actionQuotes.GeneralInstrument(context);
           break;
       }
-});
-
-
-bot.hears(/bond/i,(context,match)=>{
-    extractdata.showByInstrumentGeneralData(match[1],context);
 });
 
 /*

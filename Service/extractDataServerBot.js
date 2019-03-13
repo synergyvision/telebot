@@ -51,9 +51,14 @@ module.exports = {
  
                                         
                                 context.reply(                               
-                                    value.displayName+'                               '+value.value.displayValue+'\n'+
-                                    value.date.displayDate+' '+value.time.displayTime+' '+value.source+
-                                    '      '+value.variation.value.displayValue+' '+value.variation.percentage.displayValue
+                                    value.displayName+'\n'+
+                                    value.value.displayValue+'  '+
+                                    value.variation.value.displayValue+'  '+
+                                    value.variation.percentage.displayValue+'\n'+
+                                    value.date.displayDate+'  '+
+                                    value.time.displayTime+'  '+
+                                    value.source+'\n'+
+                                    value.symbol
                                     );
                             }
                             
