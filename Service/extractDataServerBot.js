@@ -4,7 +4,7 @@ const _ = require('lodash');
 
 module.exports = {
 
-    showByInstrumentGeneralData : function(symbol){
+    showByInstrumentGeneralData : function(symbol, context){
 
         var data = consumeServer.getDataQuotes();
             data.then((data)=>{
@@ -19,7 +19,7 @@ module.exports = {
                                          value.variation.value.displayValue,
                                          value.variation.percentage.displayValue
                                         ];
-                                console.log(a);
+                                context.reply(a);
                             }
                             
                         });
@@ -29,7 +29,7 @@ module.exports = {
             });
     },
 
-    showByInstrumentSpecificData : function(symbol){
+    showByInstrumentSpecificData : function(symbol, context){
 
         var data = consumeServer.getDataSpecificInstrument(symbol);
             data.then((data)=>{

@@ -14,8 +14,7 @@ const actionInfo = require('../Action/actionInfoBot');
 const actionMision = require('../Action/actionMisionBot');
 const actionVision = require('../Action/actionVisionBot');
 const actionVisit = require('../Action/actionVisitBot');
-
-const financialInstruments= require('../Service/extractDataServerBot');
+const actionInstrument = require ('../Action/actionInstrumentBot');
 
 const API_TOKEN = process.env.BOT_TOKEN || '';
 const PORT = process.env.PORT || 3000;
@@ -42,7 +41,7 @@ bot.on('callback_query', (context) =>{
           
           case 'info':
             actionInfo.InfoReply(context);
-            context.reply(button.GetButtonsBack());
+            //context.reply(button.GetButtonsBack());
           break;
   
           case 'service':
@@ -110,6 +109,10 @@ bot.on('callback_query', (context) =>{
           
           case 'visitus':
             actionVisit.VisitusReply(context);
+          break;
+
+          case 'insfin':
+            actionInstrument.InstrumentSpecificReply(context);
           break;
       }
 });
