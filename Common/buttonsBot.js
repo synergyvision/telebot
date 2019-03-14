@@ -27,6 +27,11 @@ module.exports = {
             ],
 
             buttons6 = [
+            Markup.callbackButton('Bonos','bond'),
+            Markup.callbackButton('BVC','bvc'),
+            ],
+
+            buttons7 = [
             Markup.callbackButton('Instrumentos Financieros','insfin'),
             ]
         ]

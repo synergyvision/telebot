@@ -12,14 +12,16 @@ module.exports = {
                     for (let i in search){
                         _.forEach(search[i],function(value){
                             if (value.displayName != undefined){
-                                let a = [value.displayName, 
-                                         value.value.displayValue,
-                                         value.source,
-                                         value.time.displayTime,
-                                         value.variation.value.displayValue,
-                                         value.variation.percentage.displayValue
-                                        ];
-                                context.reply(a);
+                                context.reply(
+                                    value.displayName+'\n'+
+                                    value.value.displayValue+'  '+
+                                    value.variation.value.displayValue+'  '+
+                                    value.variation.percentage.displayValue+'\n'+
+                                    value.date.displayDate+'  '+
+                                    value.time.displayTime+'  '+
+                                    value.source+'\n'+
+                                    value.symbol
+                                );
                             }
                             
                         });
@@ -34,7 +36,7 @@ module.exports = {
         var data = consumeServer.getDataSpecificInstrument(symbol);
             data.then((data)=>{
                 _.forEach(data.aditionalInfo, function(value){
-                    console.log(value.displayName , value.value);
+                    context.reply(value.displayName , value.value);
                 });
             }).catch((error)=>{
                 console.log('No se encontraron los datos solicitados',error);
@@ -48,8 +50,7 @@ module.exports = {
                     context.reply(value.displayName);
                         _.forEach(value.instrument,function(value){
                             if (value.displayName != undefined){
- 
-                                        
+
                                 context.reply(                               
                                     value.displayName+'\n'+
                                     value.value.displayValue+'  '+
@@ -59,7 +60,7 @@ module.exports = {
                                     value.time.displayTime+'  '+
                                     value.source+'\n'+
                                     value.symbol
-                                    );
+                                );
                             }
                             
                         });

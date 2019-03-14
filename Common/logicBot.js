@@ -15,6 +15,7 @@ const actionMision = require('../Action/actionMisionBot');
 const actionVision = require('../Action/actionVisionBot');
 const actionVisit = require('../Action/actionVisitBot');
 const actionQuotes = require('../Action/actionQuotesBot');
+const actionGeneralData = require ('../Action/actionGeneralDataBot');
 const actionInstrument = require ('../Action/actionInstrumentBot');
 
 const extractdata = require('../Service/extractDataServerBot'); 
@@ -74,10 +75,20 @@ bot.on('callback_query', (context) =>{
           case 'quotes':
           actionQuotes.GeneralInstrument(context);
           break;
+
+          case 'bond':
+          context.reply('Bonos');
+          actionGeneralData.GeneralInstrumentData('bond',context);
+          break;
+
+          case 'bvc':
+          context.reply('Bolsa de Valores de Caracas');
+          actionGeneralData.GeneralInstrumentData('bvc',context);
+          break;
       }
 });
 
-bot.hears(/Unirse/i,()=>{
+bot.hears(/Unirse/i,(context)=>{
   var joinus = commandCommands.GetCommands('joinus');
   joinus.then((joinus)=>{
     const join = new WizardScene('join_us',
@@ -128,8 +139,4 @@ bot.hears(/Unirse/i,()=>{
   });
 });
 
-/*
-bot.action('back', context=>{
-  bot.telegram.sendMessage(context.from.id,'Conocenos', button.GetButtons());
-});*/
  
