@@ -39,7 +39,7 @@ module.exports = {
 
         var data = consumeServer.getDataSpecificInstrument(symbol);
             data.then((data)=>{
-               /* context.replyWithPhoto(
+               context.replyWithPhoto(
                     {url: data.imageUrl},   
                     {caption: data.displayName+'\n'+
                     data.value.displayValue+'  '+
@@ -49,7 +49,7 @@ module.exports = {
                     data.time.displayTime+'  '+
                     data.source+'\n'+
                     data.symbol}  
-                );*/
+                );
                 _.forEach(data.aditionalInfo, function(value){
                     context.reply(value.displayName , value.value);
                 });

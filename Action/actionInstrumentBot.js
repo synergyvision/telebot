@@ -3,10 +3,10 @@ const dataserver = require('../Service/extractDataServerBot');
 module.exports = {
     
     InstrumentSpecificReply : function(symbol,context){
-        var data = dataserver.confirmInstrumentSymbol(symbol,context);
+        var data = dataserver.confirmInstrumentSymbol(symbol);
         data.then((data) =>{
             if (data){
-                dataserver.showByInstrumentSpecificData(symbol);
+                dataserver.showByInstrumentSpecificData(symbol,context);
             }else{
                 context.reply('Usted introdujo un símbolo no existente');
             }
