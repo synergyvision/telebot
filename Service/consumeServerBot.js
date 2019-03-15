@@ -11,6 +11,12 @@ const optionsQuotes = {
     json: true
 }
 
+const optionByInstrument = {
+    headers: header,
+    method: 'GET',
+    json: true
+}
+
 module.exports = {
 
     getDataQuotes :async function(){
