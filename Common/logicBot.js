@@ -66,8 +66,8 @@ bot.on('callback_query', (context) =>{
 
           case 'insfin':
             context.reply('Indique la palabra');
-            var data = context.message.text;
-            context.reply(data.toUpperCase());
+            context.message = context.message.text;
+            context.reply(context.message.toUpperCase());
             //actionInstrument.InstrumentSpecificReply(data,context);
           break;
 
@@ -114,7 +114,7 @@ bot.on('callback_query', (context) =>{
       }
 });
 
-bot.hears(/Unirse/i,(context)=>{
+bot.hears(/Unirse/i,()=>{
   var joinus = commandCommands.GetCommands('joinus');
   joinus.then((joinus)=>{
     const join = new WizardScene('join_us',
@@ -155,7 +155,7 @@ bot.hears(/Unirse/i,(context)=>{
           return context.scene.leave();  
         },
 
-        );
+    );
 
   const stage = new Stage([join],{default: 'join_us'});
   bot.use(session());
