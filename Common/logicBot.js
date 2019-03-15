@@ -114,9 +114,9 @@ bot.on('callback_query', (context) =>{
       }
 });
 
-bot.hears(/^(.*)$/, ( context ) => {
+bot.hears(/^(.*)$/, (context) => {
   actionInstrument.InstrumentSpecificReply(context.match[1],context);
-})
+});
 
 bot.hears(/Unirse/i,()=>{
   var joinus = commandCommands.GetCommands('joinus');

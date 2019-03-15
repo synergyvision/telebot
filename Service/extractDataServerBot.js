@@ -39,17 +39,17 @@ module.exports = {
 
         var data = consumeServer.getDataSpecificInstrument(symbol);
             data.then((data)=>{
-                context.replyWithPhoto(  
-                    {url: data.imageUrl},   
+                context.reply( ' <img src="data.imageUrl"  height="42" width="42"> ' ,
+                    //{url: data.imageUrl},   
                     
-                    {caption: data.displayName+'\n'+
+                    data.displayName+'\n'+
                     data.value.displayValue+'  '+
                     data.variation.value.displayValue+'  '+
                     '('+data.variation.percentage.displayValue+')\n'+
                     data.date.displayDate+'  '+
                     data.time.displayTime+'  '+
                     data.source+'\n'+
-                    value.symbol}                          
+                    value.symbol                        
                         
                     );
                 _.forEach(data.aditionalInfo, function(value){
