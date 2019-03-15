@@ -12,16 +12,19 @@ module.exports = {
                     for (let i in search){
                         _.forEach(search[i],function(value){
                             if (value.displayName != undefined){
-                                context.reply(
-                                    value.displayName+'\n'+
+                                context.replyWithPhoto(  
+                                    {url: value.imageUrl},   
+                                    
+                                    {caption: value.displayName+'\n'+
                                     value.value.displayValue+'  '+
                                     value.variation.value.displayValue+'  '+
                                     value.variation.percentage.displayValue+'\n'+
                                     value.date.displayDate+'  '+
                                     value.time.displayTime+'  '+
                                     value.source+'\n'+
-                                    value.symbol
-                                );
+                                    value.symbol}                          
+                                        
+                                    );
                             }
                             
                         });
@@ -52,15 +55,18 @@ module.exports = {
                         _.forEach(value.instrument,function(value){
                             if (value.displayName != undefined){
 
-                                context.reply(                               
-                                    value.displayName+'\n'+
-                                    value.value.displayValue+'  '+
-                                    value.variation.value.displayValue+'  '+
-                                    value.variation.percentage.displayValue+'\n'+
-                                    value.date.displayDate+'  '+
-                                    value.time.displayTime+'  '+
-                                    value.source+'\n'+
-                                    value.symbol
+                                context.replyWithPhoto(  
+                                {url: value.imageUrl},   
+                                
+                                {caption: value.displayName+'\n'+
+                                value.value.displayValue+'  '+
+                                value.variation.value.displayValue+'  '+
+                                value.variation.percentage.displayValue+'\n'+
+                                value.date.displayDate+'  '+
+                                value.time.displayTime+'  '+
+                                value.source+'\n'+
+                                value.symbol}                          
+                                    
                                 );
                             }
                             
