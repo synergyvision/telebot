@@ -115,8 +115,7 @@ bot.on('callback_query', (context) =>{
 });
 
 bot.hears(/^(.*)$/, ( context ) => {
-  context.reply(context.match[1]);
-  //actionInstrument.InstrumentSpecificReply(match[1],context);
+  actionInstrument.InstrumentSpecificReply(context.match[1],context);
 })
 
 bot.hears(/Unirse/i,()=>{
