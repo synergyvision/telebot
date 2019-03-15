@@ -39,19 +39,17 @@ module.exports = {
 
         var data = consumeServer.getDataSpecificInstrument(symbol);
             data.then((data)=>{
-                context.reply( ' <img src="data.imageUrl"  height="42" width="42"> ' ,
-                    //{url: data.imageUrl},   
-                    
-                    data.displayName+'\n'+
+               /* context.replyWithPhoto(
+                    {url: data.imageUrl},   
+                    {caption: data.displayName+'\n'+
                     data.value.displayValue+'  '+
                     data.variation.value.displayValue+'  '+
                     '('+data.variation.percentage.displayValue+')\n'+
                     data.date.displayDate+'  '+
                     data.time.displayTime+'  '+
                     data.source+'\n'+
-                    value.symbol                        
-                        
-                    );
+                    data.symbol}  
+                );*/
                 _.forEach(data.aditionalInfo, function(value){
                     context.reply(value.displayName , value.value);
                 });
@@ -64,22 +62,20 @@ module.exports = {
         var data = consumeServer.getDataQuotes();
             data.then((data)=>{
                 _.forEach(data[0].instrumentSubsection,function(value){
-                    context.reply(value.displayName);
+                    //context.reply(value.displayName);
                         _.forEach(value.instrument,function(value){
                             if (value.displayName != undefined){
 
-                                context.reply(  '<img src="data.imageUrl"  height="42" width="42"></img>',
-                                //{url: value.imageUrl},   
-                                
-                                value.displayName+'\n'+
+                                context.replyWithPhoto( 
+                                {url: value.imageUrl},   
+                                {caption:value.displayName+'\n'+
                                 value.value.displayValue+'  '+
                                 value.variation.value.displayValue+'  '+
                                 '('+value.variation.percentage.displayValue+')\n'+
                                 value.date.displayDate+'  '+
                                 value.time.displayTime+'  '+
                                 value.source+'\n'+
-                                value.symbol                          
-                                    
+                                value.symbol}    
                                 );
                             }
                             
