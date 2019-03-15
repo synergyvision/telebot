@@ -114,8 +114,8 @@ bot.on('callback_query', (context) =>{
       }
 });
 
-bot.hears(/^(.*)$/, ( match, context ) => {
-  context.reply(match[1]);
+bot.hears(/^(.*)$/, ( context ) => {
+  context.reply(context.match[1]);
   //actionInstrument.InstrumentSpecificReply(match[1],context);
 })
 
