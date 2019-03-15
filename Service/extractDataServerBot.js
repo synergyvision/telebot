@@ -26,6 +26,7 @@ module.exports = {
                             
                         });
                     }
+                    context.reply('Para conocer mas información acerca de estos ');
             }).catch((error)=>{
                 console.log('No se encontraron los datos solicitados',error);
             });
@@ -69,6 +70,29 @@ module.exports = {
             console.log('No se encontraron los datos solicitados',error);
         });
         
+    },
+
+    confirmInstrumentSymbol : function(symbol){
+        var data = consumeServer.getDataQuotes();
+        return data.then((data)=>{
+            var bool = false;
+                _.forEach(data[0].instrumentSubsection,function(value){
+                        _.forEach(value.instrument,function(value){
+                            if (value.displayName != undefined){
+                                if (symbol === value.symbol){  
+                                    bool = true;
+                                }    
+                            }
+                            
+                        });
+                });
+            return bool;
+        }).catch((error)=>{
+            console.log('No se encontraron los datos solicitados',error);
+        })
     }
+
+
+
 
 }

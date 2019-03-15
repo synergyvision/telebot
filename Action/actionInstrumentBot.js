@@ -1,19 +1,18 @@
 const dataserver = require('../Service/extractDataServerBot');
-const readline = require('readline');
-
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-  });
 
 module.exports = {
     
-    InstrumentSpecificReply : function(context){
-
-        rl.question('Indique bond', (answer) => {
-            dataserver.showByInstrumentGeneralData(answer,context);
-            //context.reply(`Oh, so your favorite food is ${answer}`);
-          });
+    InstrumentSpecificReply : function(symbol,context){
+        var data = dataserver.confirmInstrumentSymbol(symbol,context);
+        data.then((data) =>{
+            if (data){
+                dataserver.showByInstrumentSpecificData(symbol);
+            }else{
+                context.reply('Usted introdujo un símbolo no existente');
+            }
+        }).catch((err)=>{
+            console.log('Error al extraer la data', err);
+        });
 
     }
 

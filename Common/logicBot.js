@@ -2,7 +2,6 @@ const Telegraf = require('telegraf');
 const WizardScene = require('telegraf/scenes/wizard');
 const Stage = require('telegraf/stage');
 const session = require('telegraf/session');
-const dialogflow = require('dialogflow');
 
 const button = require('../Common/buttonsBot'); 
 
@@ -17,8 +16,6 @@ const actionVisit = require('../Action/actionVisitBot');
 const actionQuotes = require('../Action/actionQuotesBot');
 const actionGeneralData = require ('../Action/actionGeneralDataBot');
 const actionInstrument = require ('../Action/actionInstrumentBot');
-
-const extractdata = require('../Service/extractDataServerBot'); 
 
 const API_TOKEN = process.env.BOT_TOKEN || '';
 const PORT = process.env.PORT || 3000;
@@ -68,7 +65,8 @@ bot.on('callback_query', (context) =>{
           break;
 
           case 'insfin':
-            //context.reply('Indique la pala');
+            var data = context.message('Indique la palabra');
+            context.reply(data);
             //actionInstrument.InstrumentSpecificReply(context);
           break;
 
@@ -85,6 +83,33 @@ bot.on('callback_query', (context) =>{
           context.reply('Bolsa de Valores de Caracas');
           actionGeneralData.GeneralInstrumentData('bvc',context);
           break;
+
+          case 'etf':
+          context.reply('ETF');
+          actionGeneralData.GeneralInstrumentData('etf',context);
+          break;
+
+          case 'commodities':
+          context.reply('Materia Prima');
+          actionGeneralData.GeneralInstrumentData('commodities',context);
+          break;
+
+          case 'crypto':
+          context.reply('Criptomonedas');
+          actionGeneralData.GeneralInstrumentData('crypto',context);
+          break;
+
+          case 'currency':
+          context.reply('Monedas');
+          actionGeneralData.GeneralInstrumentData('currency',context);
+          break;
+
+          case 'stock':
+          context.reply('Acciones');
+          actionGeneralData.GeneralInstrumentData('stock',context);
+          break;
+
+ 
       }
 });
 
