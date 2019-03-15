@@ -68,17 +68,17 @@ module.exports = {
                         _.forEach(value.instrument,function(value){
                             if (value.displayName != undefined){
 
-                                context.replyWithPhoto(  
-                                {url: value.imageUrl},   
+                                context.reply(  '<img src="data.imageUrl"  height="42" width="42"></img>',
+                                //{url: value.imageUrl},   
                                 
-                                {caption: value.displayName+'\n'+
+                                value.displayName+'\n'+
                                 value.value.displayValue+'  '+
                                 value.variation.value.displayValue+'  '+
                                 '('+value.variation.percentage.displayValue+')\n'+
                                 value.date.displayDate+'  '+
                                 value.time.displayTime+'  '+
                                 value.source+'\n'+
-                                value.symbol}                          
+                                value.symbol                          
                                     
                                 );
                             }
@@ -105,6 +105,7 @@ module.exports = {
                             
                         });
                 });
+            console.log(bool);
             return bool;
         }).catch((error)=>{
             console.log('No se encontraron los datos solicitados',error);
