@@ -18,7 +18,7 @@ module.exports = {
                                     {caption: value.displayName+'\n'+
                                     value.value.displayValue+'  '+
                                     value.variation.value.displayValue+'  '+
-                                    value.variation.percentage.displayValue+'\n'+
+                                    '('+value.variation.percentage.displayValue+')\n'+
                                     value.date.displayDate+'  '+
                                     value.time.displayTime+'  '+
                                     value.source+'\n'+
@@ -39,6 +39,19 @@ module.exports = {
 
         var data = consumeServer.getDataSpecificInstrument(symbol);
             data.then((data)=>{
+                context.replyWithPhoto(  
+                    {url: data.imageUrl},   
+                    
+                    {caption: data.displayName+'\n'+
+                    data.value.displayValue+'  '+
+                    data.variation.value.displayValue+'  '+
+                    '('+data.variation.percentage.displayValue+')\n'+
+                    data.date.displayDate+'  '+
+                    data.time.displayTime+'  '+
+                    data.source+'\n'+
+                    value.symbol}                          
+                        
+                    );
                 _.forEach(data.aditionalInfo, function(value){
                     context.reply(value.displayName , value.value);
                 });
@@ -61,7 +74,7 @@ module.exports = {
                                 {caption: value.displayName+'\n'+
                                 value.value.displayValue+'  '+
                                 value.variation.value.displayValue+'  '+
-                                value.variation.percentage.displayValue+'\n'+
+                                '('+value.variation.percentage.displayValue+')\n'+
                                 value.date.displayDate+'  '+
                                 value.time.displayTime+'  '+
                                 value.source+'\n'+

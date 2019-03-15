@@ -65,9 +65,9 @@ bot.on('callback_query', (context) =>{
           break;
 
           case 'insfin':
-            context.reply('Indique la palabra');
-            context.message = context.message.text;
-            context.reply(context.message.toUpperCase());
+            context.reply('Indique el símbolo del Instrumento Financiero');
+            //context.message = context.message.text;
+            //context.reply(context.message.toUpperCase());
             //actionInstrument.InstrumentSpecificReply(data,context);
           break;
 
@@ -113,6 +113,10 @@ bot.on('callback_query', (context) =>{
  
       }
 });
+
+bot.hears(/^(.*)$/, ({ match, context }) => {
+  actionInstrument.InstrumentSpecificReply(match[1],context);
+})
 
 bot.hears(/Unirse/i,()=>{
   var joinus = commandCommands.GetCommands('joinus');
