@@ -31,7 +31,7 @@ module.exports = {
     
     getDataSpecificInstrument :async function(symbol){
         try {
-            var data = await rp.get(process.env.SERVER_INSTRUMENT_SPECIFIC.replace(/'\'/,symbol),optionByInstrument);
+            var data = await rp.get(process.env.SERVER_INSTRUMENT_SPECIFIC+symbol+'/empty',optionByInstrument);
             return data;
         } catch (error) {
             console.log('Error al extraer los datos del servidor', error);
