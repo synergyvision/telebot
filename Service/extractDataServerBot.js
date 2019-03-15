@@ -26,7 +26,7 @@ module.exports = {
                             
                         });
                     }
-                    context.reply('Para conocer mas información acerca de estos ');
+                    
             }).catch((error)=>{
                 console.log('No se encontraron los datos solicitados',error);
             });

@@ -65,9 +65,10 @@ bot.on('callback_query', (context) =>{
           break;
 
           case 'insfin':
-            var data = context.message('Indique la palabra');
-            context.reply(data);
-            //actionInstrument.InstrumentSpecificReply(context);
+            context.reply('Indique la palabra');
+            var data = context.message.text;
+            context.reply(data.toUpperCase());
+            //actionInstrument.InstrumentSpecificReply(data,context);
           break;
 
           case 'quotes':
@@ -150,7 +151,7 @@ bot.hears(/Unirse/i,(context)=>{
           commandUsers.PostUsers(joinName,joinLastname,joinID,joinEmail);
           context.reply('Sr(a)'+joinName+' '+joinLastname+
           ' por favor envie su curriculum vitae a '+joinus.synergyemail);
-          bot.telegram.sendMessage(context.from.id,'Conocenos', button.GetButtons());
+          context.reply(context.from.id,'Conocenos', button.GetButtons());
           return context.scene.leave();  
         },
 
