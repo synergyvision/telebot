@@ -12,18 +12,8 @@ module.exports = {
                     for (let i in search){
                         _.forEach(search[i],function(value){
                             if (value.displayName != undefined){
-                                context.replyWithHTML( '<img width="100" height="200" src= value.imageUrl>',
-                                    value.displayName+'\n'+
-                                    value.value.displayValue+'  '+
-                                    value.variation.value.displayValue+'  '+
-                                    '('+value.variation.percentage.displayValue+')\n'+
-                                    value.date.displayDate+'  '+
-                                    value.time.displayTime+'  '+
-                                    value.source+'\n'+
-                                    value.symbol
-                                    
-                                );
-                                /*context.replyWithPhoto(  
+
+                                context.replyWithPhoto(  
                                     {url: value.imageUrl},   
                                     
                                     {caption: value.displayName+'\n'+
@@ -35,7 +25,7 @@ module.exports = {
                                     value.source+'\n'+
                                     value.symbol}                          
                                         
-                                    );*/
+                                    );
                             }
                             
                         });
@@ -50,17 +40,23 @@ module.exports = {
 
         var data = consumeServer.getDataSpecificInstrument(symbol);
             data.then((data)=>{
-               /*context.replyWithPhoto(
+
+               context.replyWithPhoto(
                     {url: data.imageUrl},   
-                    {caption: data.displayName+'\n'+
+                    {
+                    
+                       caption: data.displayName+'\n'+
                     data.value.displayValue+'  '+
                     data.variation.value.displayValue+'  '+
                     '('+data.variation.percentage.displayValue+')\n'+
                     data.date.displayDate+'  '+
                     data.time.displayTime+'  '+
                     data.source+'\n'+
-                    data.symbol}  
-               )*/
+                    data.symbol
+                
+                    }  
+               );
+
                 _.forEach(data.aditionalInfo, function(value){
                     context.replyWithHTML(`<B>${value.displayName , value.value}</B>`);
                 });
