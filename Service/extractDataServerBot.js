@@ -13,17 +13,17 @@ module.exports = {
                         _.forEach(search[i],function(value){
                             if (value.displayName != undefined){
                                 context.replyWithHTML( 
-                                   <p> 
-                                       <Image> {width="100" }{height="200" }{src= value.imageUrl }</Image>
-                                    {value.displayName+'\n'+
+                                   
+                                       <Image> {width="100" }{height="200" }{src= value.imageUrl }</Image>,
+                                    value.displayName+'\n'+
                                     value.value.displayValue+'  '+
                                     value.variation.value.displayValue+'  '+
                                     '('+value.variation.percentage.displayValue+')\n'+
                                     value.date.displayDate+'  '+
                                     value.time.displayTime+'  '+
                                     value.source+'\n'+
-                                    value.symbol}
-                                    </p>
+                                    value.symbol
+                                    
                                 );
                                 /*context.replyWithPhoto(  
                                     {url: value.imageUrl},   
