@@ -58,7 +58,7 @@ module.exports = {
                );
 
                 _.forEach(data.aditionalInfo, function(value){
-                    context.reply(value.displayName , value.value);
+                    context.reply(value.displayName +': '+ value.value);
                 });
             }).catch((error)=>{
                 console.log('No se encontraron los datos solicitados',error);
