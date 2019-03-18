@@ -15,11 +15,11 @@ module.exports = {
     
             buttons3 = [
             Markup.callbackButton('Visión', 'vision'),
-            Markup.callbackButton('Unetenos', 'joinus'),
+            Markup.callbackButton('Únetenos', 'joinus'),
             ],
     
             buttons4 = [
-            Markup.callbackButton('Visitanos', 'visitus')
+            Markup.callbackButton('Visítanos', 'visitus')
             ],
 
             buttons5 = [
@@ -29,7 +29,6 @@ module.exports = {
             buttons6 = [
             Markup.callbackButton('Bonos','bond'),
             Markup.callbackButton('BVC','bvc'),
-            Markup.callbackButton('ETF','etf')
             ],
 
             buttons7 = [

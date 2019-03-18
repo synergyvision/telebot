@@ -13,6 +13,7 @@ const actionInfo = require('../Action/actionInfoBot');
 const actionMision = require('../Action/actionMisionBot');
 const actionVision = require('../Action/actionVisionBot');
 const actionVisit = require('../Action/actionVisitBot');
+const actionJoin = require('../Action/actionJoinBot');
 const actionQuotes = require('../Action/actionQuotesBot');
 const actionGeneralData = require ('../Action/actionGeneralDataBot');
 const actionInstrument = require ('../Action/actionInstrumentBot');
@@ -57,7 +58,7 @@ bot.on('callback_query', (context) =>{
           break;
               
           case 'joinus':
-            context.reply('Por favor para unirse escriba la palabra unirse');
+            actionJoin.JoinReply(context);
           break;
           
           case 'visitus':
@@ -66,9 +67,6 @@ bot.on('callback_query', (context) =>{
 
           case 'insfin':
             context.reply('Indique el símbolo del Instrumento Financiero');
-            //context.message = context.message.text;
-            //context.reply(context.message.toUpperCase());
-            //actionInstrument.InstrumentSpecificReply(data,context);
           break;
 
           case 'quotes':
@@ -118,7 +116,7 @@ bot.hears(/^(.*)$/, (context) => {
   actionInstrument.InstrumentSpecificReply(context.match[1],context);
 });
 
-bot.hears(/Unirse/i,()=>{
+/*bot.hears(/Unirse/i,()=>{
   var joinus = commandCommands.GetCommands('joinus');
   joinus.then((joinus)=>{
     const join = new WizardScene('join_us',
@@ -167,6 +165,6 @@ bot.hears(/Unirse/i,()=>{
   }).catch(err => {
     console.log('No se reconoce Joinus',err);
   });
-});
+});*/
 
  
