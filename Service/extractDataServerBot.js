@@ -12,9 +12,7 @@ module.exports = {
                     for (let i in search){
                         _.forEach(search[i],function(value){
                             if (value.displayName != undefined){
-                                context.replyWithHTML( 
-                                   
-                                       <Image> {width="100" }{height="200" }{src= value.imageUrl }</Image>,
+                                context.replyWithHTML( '<img width="100" height="200" src= value.imageUrl>',
                                     value.displayName+'\n'+
                                     value.value.displayValue+'  '+
                                     value.variation.value.displayValue+'  '+
