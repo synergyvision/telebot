@@ -40,7 +40,7 @@ module.exports = {
 
         var data = consumeServer.getDataSpecificInstrument(symbol);
             data.then((data)=>{
-                context.replyWithPhoto({url: data.imageUrl});
+                context.reply(data.displayName);
                /*context.replyWithPhoto(
                     {url: data.imageUrl},   
                     {caption: data.displayName+'\n'+
@@ -56,6 +56,18 @@ module.exports = {
                 _.forEach(data.aditionalInfo, function(value){
                     context.reply(value.displayName +': '+ value.value);
                 });
+                
+                context.replyWithPhoto(
+                    {url: data.imageUrl},   
+                    {caption: data.displayName+'\n'+
+                    data.value.displayValue+'  '+
+                    data.variation.value.displayValue+'  '+
+                    '('+data.variation.percentage.displayValue+')\n'+
+                    data.date.displayDate+'  '+
+                    data.time.displayTime+'  '+
+                    data.source+'\n'+
+                    data.symbol}  
+               );
             }).catch((error)=>{
                 console.log('No se encontraron los datos solicitados',error);
             });
