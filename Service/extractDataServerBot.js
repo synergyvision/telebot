@@ -40,7 +40,7 @@ module.exports = {
 
         var data = consumeServer.getDataSpecificInstrument(symbol);
             data.then((data)=>{
-                console.log(data.displayName);
+                context.reply(data.displayName);
                /*context.replyWithPhoto(
                     {url: data.imageUrl},   
                     {caption: data.displayName+'\n'+
