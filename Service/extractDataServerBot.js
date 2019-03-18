@@ -40,21 +40,17 @@ module.exports = {
 
         var data = consumeServer.getDataSpecificInstrument(symbol);
             data.then((data)=>{
-
+                console.log(data.displayName);
                /*context.replyWithPhoto(
                     {url: data.imageUrl},   
-                    {
-                    
-                    caption: data.displayName+'\n'+
+                    {caption: data.displayName+'\n'+
                     data.value.displayValue+'  '+
                     data.variation.value.displayValue+'  '+
                     '('+data.variation.percentage.displayValue+')\n'+
                     data.date.displayDate+'  '+
                     data.time.displayTime+'  '+
                     data.source+'\n'+
-                    data.symbol
-                
-                    }  
+                    data.symbol}  
                );*/
 
                 _.forEach(data.aditionalInfo, function(value){
@@ -108,7 +104,6 @@ module.exports = {
                             
                         });
                 });
-            console.log(bool);
             return bool;
         }).catch((error)=>{
             console.log('No se encontraron los datos solicitados',error);
