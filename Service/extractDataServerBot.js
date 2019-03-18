@@ -12,7 +12,20 @@ module.exports = {
                     for (let i in search){
                         _.forEach(search[i],function(value){
                             if (value.displayName != undefined){
-                                context.replyWithPhoto(  
+                                context.replyWithHTML( 
+                                   <p> 
+                                       <Image> {width="100" }{height="200" }{src= value.imageUrl }</Image>
+                                    {value.displayName+'\n'+
+                                    value.value.displayValue+'  '+
+                                    value.variation.value.displayValue+'  '+
+                                    '('+value.variation.percentage.displayValue+')\n'+
+                                    value.date.displayDate+'  '+
+                                    value.time.displayTime+'  '+
+                                    value.source+'\n'+
+                                    value.symbol}
+                                    </p>
+                                );
+                                /*context.replyWithPhoto(  
                                     {url: value.imageUrl},   
                                     
                                     {caption: value.displayName+'\n'+
@@ -24,7 +37,7 @@ module.exports = {
                                     value.source+'\n'+
                                     value.symbol}                          
                                         
-                                    );
+                                    );*/
                             }
                             
                         });
@@ -51,7 +64,7 @@ module.exports = {
                     data.symbol}  
                )*/
                 _.forEach(data.aditionalInfo, function(value){
-                    context.reply(value.displayName , value.value);
+                    context.replyWithHTML(`<B>${value.displayName , value.value}</B>`);
                 });
             }).catch((error)=>{
                 console.log('No se encontraron los datos solicitados',error);
