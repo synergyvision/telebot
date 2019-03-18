@@ -41,11 +41,11 @@ module.exports = {
         var data = consumeServer.getDataSpecificInstrument(symbol);
             data.then((data)=>{
 
-               context.replyWithPhoto(
+               /*context.replyWithPhoto(
                     {url: data.imageUrl},   
                     {
                     
-                       caption: data.displayName+'\n'+
+                    caption: data.displayName+'\n'+
                     data.value.displayValue+'  '+
                     data.variation.value.displayValue+'  '+
                     '('+data.variation.percentage.displayValue+')\n'+
@@ -55,7 +55,7 @@ module.exports = {
                     data.symbol
                 
                     }  
-               );
+               );*/
 
                 _.forEach(data.aditionalInfo, function(value){
                     context.reply(value.displayName +': '+ value.value);
