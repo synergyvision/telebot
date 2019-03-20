@@ -29,7 +29,7 @@ bot.startWebhook(`/bot${API_TOKEN}`, null, PORT);
 
 bot.start((context)=>{
   context.reply('Bienvenidos a Synergy Vision \n' +
-                'Para conocer mas sobre nosotros ingresa la palabra "información"');
+                'Para conocer más sobre nosotros ingresa la palabra "información"');
 });
 
 bot.hears(/Informaci[óo]n/i, (context) => {   
