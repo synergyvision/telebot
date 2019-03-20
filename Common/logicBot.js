@@ -33,7 +33,7 @@ bot.start((context)=>{
 });
 
 bot.hears(/Informaci[óo]n/i, (context) => {   
-  bot.telegram.sendMessage(context.from.id,'Conocenos', button.GetButtons());
+  bot.telegram.sendMessage(context.from.id,'Conócenos', button.GetButtons());
 });
  
 bot.on('callback_query', (context) =>{
@@ -42,10 +42,12 @@ bot.on('callback_query', (context) =>{
       switch(context.update.callback_query.data){
           
           case 'info':
+            context.reply('\nInformación General\n\n');
             actionInfo.InfoReply(context);
           break;
   
           case 'service':
+            context.reply('\n Conozca nuestros Servicios \n\n'); 
             actionService.ServiceReply(context);
           break;
               
